@@ -1,4 +1,4 @@
-var form = document.getElementById("signup");
+var form = document.getElementById("form");
 var firstName = document.getElementById("firstName");
 var age = document.getElementById("age");
 var gift = function (age) {
@@ -30,12 +30,27 @@ console.log('Total est de type: ', typeof totalString);
 //
 var welcomeMsg = "\n  Bienvenue ".concat(pseudo, ",\n  tu as ").concat(total, " points\n");
 console.log(welcomeMsg);
-var sum = function (nbre) {
-    var total = nbre * nbre;
-    return total;
-};
-var add = sum(3);
-console.log(add);
-// ARRAY
+// Array
 var colors = ["red", "blue", "green", "orange"];
-console.log(colors);
+var numbers = [1, 2, 3, 7.5];
+numbers.push(9);
+console.log(numbers);
+var values;
+values = [
+    'bonjour',
+    true,
+    500,
+    {
+        id: 123445,
+        true: true,
+        hobbies: ['Voyage Japon', 'jeux video']
+    }
+];
+console.log(values[3]);
+// push
+var stringNumberArray = ['red', 9, false];
+stringNumberArray.push('salut');
+console.log(stringNumberArray);
+stringNumberArray[1] = "Re-bonjour";
+console.log(stringNumberArray);
+// TUPLE

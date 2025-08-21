@@ -1,12 +1,21 @@
-const form = document.getElementById("signup");
+const form = document.getElementById("form");
 const firstName = document.getElementById("firstName") as HTMLInputElement;
 const age = document.getElementById("age") as HTMLInputElement;
+
 
 const gift = (age: number) => {
   age = age + 3
   return age
 }
 
+<<<<<<< HEAD
+=======
+// let
+
+// const
+
+
+>>>>>>> 07596442a522a6257b67d3fbd7f1ce64c5b3731d
 if (form) {
   form.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -21,11 +30,17 @@ if (form) {
 
 // Création de variables et types
 
+<<<<<<< HEAD
 let heros: string = 'superman'
 
 let pseudo: string = heros;
 console.log(pseudo);
 
+=======
+//
+
+let pseudo: string = 'superman';
+>>>>>>> 07596442a522a6257b67d3fbd7f1ce64c5b3731d
 
 let total: number = 200;
 
@@ -56,18 +71,37 @@ let welcomeMsg: string = `
 console.log(welcomeMsg);
 
 
-const sum = (nbre: number) => {
-  let total = nbre * nbre
-  return total
-}
+// Array
 
-const add = sum(3)
-console.log(add);
+let colors: Array<string> = ["red", "blue", "green", "orange"]
 
+let numbers: number[] = [1, 2, 3, 7.5]
 
-// ARRAY
-
-let colors: string[] = ["red", "blue", "green", "orange"]
-console.log(colors);
+numbers.push(9)
+console.log(numbers);
 
 
+let values : any[];
+values = [
+  'bonjour',
+  true,
+  500,
+  {
+    id:123445,
+    true: true,
+    hobbies: ['Voyage Japon', 'jeux video']
+  }
+]
+
+console.log(values[3]);
+
+
+// push
+let stringNumberArray = ['red', 9, false];
+stringNumberArray.push('salut')
+console.log(stringNumberArray);
+
+stringNumberArray[1] = "Re-bonjour";
+console.log(stringNumberArray);
+
+// TUPLE
