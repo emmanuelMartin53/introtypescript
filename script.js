@@ -16,8 +16,10 @@ if (form) {
         }
     });
 }
-//
-var pseudo = 'superman';
+// Création de variables et types
+var heros = 'superman';
+var pseudo = heros;
+console.log(pseudo);
 var total = 200;
 var isLoading = true;
 // intellisense vs code
@@ -28,3 +30,12 @@ console.log('Total est de type: ', typeof totalString);
 //
 var welcomeMsg = "\n  Bienvenue ".concat(pseudo, ",\n  tu as ").concat(total, " points\n");
 console.log(welcomeMsg);
+var sum = function (nbre) {
+    var total = nbre * nbre;
+    return total;
+};
+var add = sum(3);
+console.log(add);
+// ARRAY
+var colors = ["red", "blue", "green", "orange"];
+console.log(colors);

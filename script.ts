@@ -7,7 +7,6 @@ const gift = (age: number) => {
   return age
 }
 
-
 if (form) {
   form.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -17,19 +16,20 @@ if (form) {
     } else {
       console.log(`Bonjour ${firstName.value} tu peux voter car tu as ${age.value} ans, tu aura droit à un cadeau quand tu auras ${gift(+age.value)} ans`);
     }
-
-
   })
 }
 
+// Création de variables et types
 
+let heros: string = 'superman'
 
+let pseudo: string = heros;
+console.log(pseudo);
 
-//
-
-let pseudo: string = 'superman';
 
 let total: number = 200;
+
+
 
 let isLoading: boolean = true
 
@@ -54,3 +54,20 @@ let welcomeMsg: string = `
   tu as ${total} points
 `
 console.log(welcomeMsg);
+
+
+const sum = (nbre: number) => {
+  let total = nbre * nbre
+  return total
+}
+
+const add = sum(3)
+console.log(add);
+
+
+// ARRAY
+
+let colors: string[] = ["red", "blue", "green", "orange"]
+console.log(colors);
+
+
