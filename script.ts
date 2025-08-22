@@ -93,3 +93,11 @@ stringNumberArray[1] = "Re-bonjour";
 console.log(stringNumberArray);
 
 // TUPLE
+
+let x: [string, number];
+x = ["Hello", 20];
+
+// x.push("Bonjour")
+// console.log(x);
+
+console.log(x[0].substring(1));
