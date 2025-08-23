@@ -185,10 +185,36 @@ USER_READ_ONLY = 3
 // console.log(anyDataArray);
 // anyDataArray.push("salut")
 // console.log(anyDataArray);
-var userInfos = {
-    name: "Hackerman",
-    pseudo: 123445
+// let userInfos: {
+//   name: any,
+//   pseudo: any,
+// } = {
+//   name: "Hackerman",
+//   pseudo: 123445
+// }
+// console.log("userInfos 1", userInfos);
+// userInfos.pseudo = "123445fglmhi";
+// console.log("userInfos 2", userInfos);
+//UNKNOWN
+// let inputData: unknown;
+// inputData = 20;
+// console.log(typeof inputData);
+// let inputAge: number;
+// if (typeof inputData === 'number') {
+//   inputAge = inputData
+//   console.log(typeof inputAge);
+// }
+//console.log(anyDataArray);
+// VOID
+// const gift = (age: number) => {
+//   return age +3
+// }
+// const logData = (param) => {
+//   console.log(`Résultat ${param}`);
+// }
+//  console.log(logData(gift(20)));
+// TYPE FUNCTION
+var greet = function (name) {
+    console.log("Hello, " + name.toUpperCase() + "!!");
 };
-console.log('userInfos 1', typeof userInfos);
-userInfos.pseudo = "123445fglmhi";
-console.log(userInfos);
+console.log(typeof greet("Emmanuel"));
