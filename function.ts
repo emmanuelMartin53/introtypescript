@@ -100,11 +100,49 @@
 // console.log(buildNameFun);
 
 
-function gift3 (age: number, sum: (arg: number) => void ) {
-  const ageMember = age + 3
-  sum(ageMember)
+// function gift3 (age: number, callback: (number: number) => void ) {
+//   const ageMember = age + 3
+//   callback(ageMember)
+// }
+// gift3(40, (num) => {
+//   console.log(num);
+
+// })
+
+
+function commanderPizza(callback: (message: string) => void) {
+  console.log("Pizza en préparation...");
+
+  // Après un moment, la pizza est prête
+  callback("Ta pizza est prête 🍕 !");
 }
-gift3(40, (num) => {
-  console.log(num);
-  
-})
+
+// J'appelle la fonction et je donne un "callback" (une fonction)
+commanderPizza((msg) => {
+  console.log("Message reçu :", msg);
+});
+
+
+// UNIONS TYPE
+
+// let firstName: string | number | boolean = "Roger"
+// firstName = true;
+
+// let names: (string | number)[] = [];
+// names = ["test", 29, true]
+
+const concat = (arg1: number | string, arg2: number | string) => {
+  let result: string | number;
+  if (typeof arg1 === "number" && typeof arg2 === "number") {
+    result = arg1 + arg2
+  } else if (typeof arg1 === "string" && typeof arg2 === "string") {
+    result = arg1 + arg2
+  } else {
+    result = arg1.toString() + arg2.toString()
+  }
+  return result
+}
+
+console.log(concat(20, 40));
+console.log(concat("Hello", 40));
+console.log(concat("Hello", "World"));
