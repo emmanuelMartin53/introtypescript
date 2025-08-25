@@ -1,214 +1,219 @@
-// const form = document.getElementById("form");
-// const firstName = document.getElementById("firstName") as HTMLInputElement;
-// const age = document.getElementById("age") as HTMLInputElement;
+
+// RÉCUPERATION DES ÉLÉMENTS HTML
+
+const form = document.getElementById("form");
+const firstName = document.getElementById("firstName") as HTMLInputElement;
+const age = document.getElementById("age") as HTMLInputElement;
 
 
-// const gift = (age: number) => {
-//   age = age + 3
-//   return age
-// }
+const gift = (age: number) => {
+  age = age + 3
+  return age
+}
 
 // let
 
 // const
 
 
-// if (form) {
-//   form.addEventListener('submit', (event) => {
-//     event.preventDefault();
+if (form) {
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
 
-//     if (+age.value < 18) {
-//       console.log("tu n'est pas majeur, tu ne peux pas voter!");
-//     } else {
-//       console.log(`Bonjour ${firstName.value} tu peux voter car tu as ${age.value} ans, tu aura droit à un cadeau quand tu auras ${gift(+age.value)} ans`);
-//     }
-//   })
-// }
+    if (+age.value < 18) {
+      console.log("tu n'est pas majeur, tu ne peux pas voter!");
+    } else {
+      console.log(`Bonjour ${firstName.value} tu peux voter car tu as ${age.value} ans, tu aura droit à un cadeau quand tu auras ${gift(+age.value)} ans`);
+    }
+  })
+}
 
-// // Création de variables et types
+// CREATION DES TYPES DE VARIABLES
 
-// let heros: string = 'superman'
+let heros: string = 'superman'
 
-// let pseudo: string = heros;
-// console.log(pseudo);
-
-
-// let total: number = 200;
+let pseudo: string = heros;
+console.log(pseudo);
 
 
-
-// let isLoading: boolean = true
-
-
-// // intellisense vs code
+let total: number = 200;
 
 
-// console.log(pseudo.length);
+
+let isLoading: boolean = true
 
 
-// console.log(typeof total);
+// INTELLISENCE VS CODE
 
 
-// let totalString: string = total.toString()
-// console.log('Total est de type: ', typeof totalString);
+console.log(pseudo.length);
+
+
+console.log(typeof total);
+
+
+let totalString: string = total.toString()
+console.log('Total est de type: ', typeof totalString);
 
 
 //
 
-// let welcomeMsg: string = `
-//   Bienvenue ${pseudo},
-//   tu as ${total} points
-// `
-// console.log(welcomeMsg);
+let welcomeMsg: string = `
+  Bienvenue ${pseudo},
+  tu as ${total} points
+`
+console.log(welcomeMsg);
 
 
-// Array
+// ARRAY
 
-//let colors: Array<string> = ["red", "blue", "green", "orange"]
+let colors: Array<string> = ["red", "blue", "green", "orange"]
 
-// let numbers: number[] = [1, 2, 3, 7.5]
+let numbers: number[] = [1, 2, 3, 7.5]
 
-// numbers.push(9)
-// console.log(numbers);
-
-
-// let values : any[];
-// values = [
-//   'bonjour',
-//   true,
-//   500,
-//   {
-//     id:123445,
-//     true: true,
-//     hobbies: ['Voyage Japon', 'jeux video']
-//   }
-// ]
-
-// // je vais chercher
-// console.log(values[3].hobbies[0]);
+numbers.push(9)
+console.log(numbers);
 
 
-// // push
-// let stringNumberArray = ['red', 9, false];
-// stringNumberArray.push('salut')
-// console.log(stringNumberArray);
+let values : any[];
+values = [
+  'bonjour',
+  true,
+  500,
+  {
+    id:123445,
+    true: true,
+    hobbies: ['Voyage Japon', 'jeux video']
+  }
+]
 
-// stringNumberArray[1] = "Re-bonjour";
-// console.log(stringNumberArray);
+ // RECHERCHE D'UNE VALEUR D'UN TABLEAU(ARRAY)
 
-// // TUPLE
+console.log(values[3].hobbies[0]);
 
-// let x: [string, number];
-// x = ["Hello", 30]
 
-// x = ["Hello", 30, "Bonjour"]
-// x.push("Bonjour")
-// console.log(x);
+// push
 
-// x[0].substring(1)
+let stringNumberArray = ['red', 9, false];
+stringNumberArray.push('salut')
+console.log(stringNumberArray);
 
-// console.log(x[1].toString);
-// console.log(typeof x[1]);
+stringNumberArray[1] = "Re-bonjour";
+console.log(stringNumberArray);
 
-// const member: {
-//   level: [string, number]
-// } = {
-//   level: ["admin", 1]
-// }
-// console.log(member);
+// TUPLE
 
-// member.level[0] = "admin2"
-// console.log(member);
+let x: [string, number];
+x = ["Hello", 30]
 
-// member.level.push('prof')
-// console.log(member.level)
+x = ["Hello", 30, "Bonjour"]
+x.push("Bonjour")
+console.log(x);
+
+x[0].substring(1)
+
+console.log(x[1].toString);
+console.log(typeof x[1]);
+
+const member: {
+  level: [string, number]
+} = {
+  level: ["admin", 1]
+}
+console.log(member);
+
+member.level[0] = "admin2"
+console.log(member);
+
+member.level.push('prof')
+console.log(member.level)
 
 
 // OBJECTS
 
-// let car = {
-//   color: "red",
-//   date: 2020,
-//   speed: 500
-// }
-// console.log(car.color);
+let car = {
+  color: "red",
+  date: 2020,
+  speed: 500
+}
+console.log(car.color);
 
 // EXERCICES
 
-// 1
-// let names: string;
-// // 2
-// let speed: number = 25;
-// // 3
-// let isLoading: boolean;
-// // 4
-// let age: string|number;
+ // 1
+let names: string;
+ // 2
+let speed: number = 25;
+ // 3
+let isLoading: boolean;
+ // 4
+let age: string|number;
 
-// // 5
-// let colors: string[] = [];
-// colors.push("red");
-// console.log(colors);
+ // 5
+let colors: string[] = [];
+colors.push("red");
+console.log(colors);
 
 // 6
 
-// let infos: (string| boolean | number)[] = [];
-// infos.push("dupont")
-// infos.push(true)
-// infos.push(40)
+let infos: (string| boolean | number)[] = [];
+infos.push("dupont")
+infos.push(true)
+infos.push(40)
 
-// console.log(infos);
+console.log(infos);
 
 
 // 7
 
-// let member: object = {
-//   firstName: "Dupont",
-//   age: 40,
-//   isLogged: true
-// };
-// console.log(member.age);
+let member: object = {
+  firstName: "Dupont",
+  age: 40,
+  isLogged: true
+};
+console.log(member.age);
 
 
 // 8
 
-// let member: {
-//   firstName: string;
-//   age: number;
-//   isLogged: boolean;
+let member: {
+  firstName: string;
+  age: number;
+  isLogged: boolean;
 
-// } = {
-//   firstName: "Dupont",
-//   age: 20,
-//   isLogged: true
-// }
+} = {
+  firstName: "Dupont",
+  age: 20,
+  isLogged: true
+}
 
-// console.log(member.age);
+console.log(member.age);
+
+
+// 9
+
+let member: object = {
+  firstName: "Dupont",
+  age: 20,
+  isLogged: true
+}
+console.log('data 1', typeof member);
+
+member = [];
+console.log('data 2', typeof member);
 
 
 // 10
-
-// let member: object = {
-//   firstName: "Dupont",
-//   age: 20,
-//   isLogged: true
-// }
-// console.log('data 1', typeof member);
-
-// member = [];
-// console.log('data 2', typeof member);
+let infos: [string, number];
+infos = ["hello", 0];
+infos[1] = 200;
+console.log(infos[1]);
+infos.push("bonjour")
+console.log(infos);
 
 
-// 11
-// let infos: [string, number];
-// infos = ["hello", 0];
-// infos[1] = 200;
-// console.log(infos[1]);
-// infos.push("bonjour")
-// console.log(infos);
-
-
-// const surname: string = "Emmanuel";
-// console.log(surname);
+const surname: string = "Emmanuel";
+console.log(surname);
 
 
 /*
@@ -219,119 +224,119 @@ USER_READ_ONLY = 3
 */
 
 
-// enum Level  {
-//   ADMIN,
-//   MODERATOR,
-//   SUPPORT,
-//   USER_READ_ONLY,
-// }
+enum Level  {
+  ADMIN, = 0
+  MODERATOR, # = 1
+  SUPPORT, # = 2
+  USER_READ_ONLY, # = 3
+}
 
-// const users = {
-//   pseudo: "Batman",
-//   level: Level.SUPPORT
-// }
+const users = {
+  pseudo: "Batman",
+  level: Level.SUPPORT
+}
 
-// if (users.level === Level.SUPPORT ) {
-//   console.log(`Bienvenue ${users.pseudo}, vous travaillez au service support ${Level.SUPPORT}`);
+if (users.level === Level.SUPPORT ) {
+  console.log(`Bienvenue ${users.pseudo}, vous travaillez au service support ${Level.SUPPORT}`);
 
-// }
-
-
-// enum Color {
-//   red = 1,
-//   green,
-//   blue = 6
-// }
-
-// let colorName: string = Color[2]
-// console.log(colorName);
+ }
 
 
-// colorName = Color[6]
-// console.log(colorName);
+enum Color {
+  red = 1,
+  green,
+  blue = 6
+}
+
+let colorName: string = Color[2]
+console.log(colorName);
+
+
+colorName = Color[6]
+console.log(colorName);
 
 
 
 // ANY
 
-// let anyData: any = "salut";
-// console.log(anyData);
-// let anyData: any = 2;
-// console.log(anyData);
-// let anyData: any = true;
-// console.log(anyData);
-// let anyData: any = [];
-// console.log(typeof anyData);
+let anyData: any = "salut";
+console.log(anyData);
+let anyData: any = 2;
+console.log(anyData);
+let anyData: any = true;
+console.log(anyData);
+let anyData: any = [];
+console.log(typeof anyData);
 
-// let anyData: any = {
-//   color: ["blue","red"]
-// };
-// console.log(typeof anyData);
-
-
-// let anyDataArray: any[] = [];
-// anyDataArray = ["hello", 25, true, ['red', 'blue'], {name: "doe"}]
-// console.log(anyDataArray);
-
-// anyDataArray.push("salut")
-// console.log(anyDataArray);
+let anyData: any = {
+  color: ["blue","red"]
+};
+console.log(typeof anyData);
 
 
-// let userInfos: {
-//   name: any,
-//   pseudo: any,
-// } = {
-//   name: "Hackerman",
-//   pseudo: 123445
-// }
+let anyDataArray: any[] = [];
+anyDataArray = ["hello", 25, true, ['red', 'blue'], {name: "doe"}]
+console.log(anyDataArray);
 
-// console.log("userInfos 1", userInfos);
-
-// userInfos.pseudo = "123445fglmhi";
-
-// console.log("userInfos 2", userInfos);
+anyDataArray.push("salut")
+console.log(anyDataArray);
 
 
-//UNKNOWN
+let userInfos: {
+  name: any,
+  pseudo: any,
+} = {
+  name: "Hackerman",
+  pseudo: 123445
+}
+
+console.log("userInfos 1", userInfos);
+
+userInfos.pseudo = "123445fglmhi";
+
+console.log("userInfos 2", userInfos);
 
 
-// let inputData: unknown;
-// inputData = 20;
-
-// console.log(typeof inputData);
+// UNKNOWN
 
 
+let inputData: unknown;
+inputData = 20;
 
-// let inputAge: number;
-
-// if (typeof inputData === 'number') {
-//   inputAge = inputData
-//   console.log(typeof inputAge);
-// }
+console.log(typeof inputData);
 
 
-//console.log(anyDataArray);
+
+let inputAge: number;
+
+if (typeof inputData === 'number') {
+  inputAge = inputData
+  console.log(typeof inputAge);
+}
+
+
+console.log(anyDataArray);
 
 
 
 // VOID
 
 
-// const gift = (age: number) => {
-//   return age +3
-// }
+const gift = (age: number) => {
+  return age +3
+}
 
-// const logData = (param) => {
-//   console.log(`Résultat ${param}`);
+const logData = (param) => {
+  console.log(`Résultat ${param}`);
 
-// }
-//  console.log(logData(gift(20)));
+}
+ console.log(logData(gift(20)));
 
 
  // TYPE FUNCTION
 
 
 const greet = (name: string) => {
-  console.log("Hello, " + name.toUpperCase() + "!!");
+  console.log("Hello, " + name.charAt(0).toUpperCase() + name.slice(1).toLowerCase() + "!!");
 }
-console.log(typeof greet("Emmanuel"));
+console.log(typeof greet("emmanuel"));
