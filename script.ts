@@ -343,3 +343,27 @@ const greet = (name: string) => {
   console.log("Hello, " + name.charAt(0).toUpperCase() + name.slice(1).toLowerCase() + "!!");
 }
 console.log(greet("emmanuel"));
+
+
+
+//
+
+const gift2 = (number: number) => {
+  return number + 3
+}
+
+
+// // const kdo = gift2(10)
+// // console.log("le résultat est: ", kdo);
+
+const displayClg = (param: number) => {
+  return param
+
+}
+
+let age: (number: number) => number;
+age = gift2
+console.log("age 1 ",age(20));
+
+age = displayClg;
+console.log("age 2 ",age(20));
