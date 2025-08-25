@@ -11,10 +11,7 @@ const gift = (age: number) => {
   return age
 }
 
-// let
-
-// const
-
+// // let
 
 if (form) {
   form.addEventListener('submit', (event) => {
@@ -28,7 +25,7 @@ if (form) {
   })
 }
 
-// CREATION DES TYPES DE VARIABLES
+// // // Création de variables et types
 
 let heros: string = 'superman'
 
@@ -43,7 +40,7 @@ let total: number = 200;
 let isLoading: boolean = true
 
 
-// INTELLISENCE VS CODE
+// //  intellisense vs code
 
 
 console.log(pseudo.length);
@@ -56,7 +53,7 @@ let totalString: string = total.toString()
 console.log('Total est de type: ', typeof totalString);
 
 
-//
+
 
 let welcomeMsg: string = `
   Bienvenue ${pseudo},
@@ -65,9 +62,9 @@ let welcomeMsg: string = `
 console.log(welcomeMsg);
 
 
-// ARRAY
+// // Array
 
-let colors: Array<string> = ["red", "blue", "green", "orange"]
+// let colors: Array<string> = ["red", "blue", "green", "orange"]
 
 let numbers: number[] = [1, 2, 3, 7.5]
 
@@ -87,19 +84,21 @@ values = [
   }
 ]
 
- // RECHERCHE D'UNE VALEUR D'UN TABLEAU(ARRAY)
+//  // je vais chercher
 
-console.log(values[3].hobbies[0]);
+//  console.log(values[3].hobbies[0]);
 
 
-// push
+//  // push
+
+// let stringNumberArray = ['red', 9, false];
+// stringNumberArray.push('salut')
+// console.log(stringNumberArray);
 
 let stringNumberArray = ['red', 9, false];
 stringNumberArray.push('salut')
 console.log(stringNumberArray);
 
-stringNumberArray[1] = "Re-bonjour";
-console.log(stringNumberArray);
 
 // TUPLE
 
@@ -129,7 +128,7 @@ member.level.push('prof')
 console.log(member.level)
 
 
-// OBJECTS
+// // OBJECTS
 
 let car = {
   color: "red",
@@ -138,23 +137,28 @@ let car = {
 }
 console.log(car.color);
 
-// EXERCICES
+// // EXERCICES
 
- // 1
-let names: string;
- // 2
-let speed: number = 25;
- // 3
-let isLoading: boolean;
- // 4
-let age: string|number;
+// // 1
 
- // 5
-let colors: string[] = [];
-colors.push("red");
-console.log(colors);
+//  let names: string;
+// // 2
 
-// 6
+// let speed: number = 25;
+//  // 3
+
+// let isLoading: boolean;
+// // 4
+
+// let age: string|number;
+
+//  // 5
+
+// let colors: string[] = [];
+// colors.push("red");
+// console.log(colors);
+
+// // 6
 
 let infos: (string| boolean | number)[] = [];
 infos.push("dupont")
@@ -164,7 +168,7 @@ infos.push(40)
 console.log(infos);
 
 
-// 7
+// // 7
 
 let member: object = {
   firstName: "Dupont",
@@ -174,7 +178,7 @@ let member: object = {
 console.log(member.age);
 
 
-// 8
+// // 8
 
 let member: {
   firstName: string;
@@ -202,33 +206,48 @@ console.log('data 1', typeof member);
 member = [];
 console.log('data 2', typeof member);
 
+ // 9
+
+// let member: object = {
+//   firstName: "Dupont",
+//   age: 20,
+//   isLogged: true
+// }
+// console.log('data 1', typeof member);
+
+// member = [];
+// console.log('data 2', typeof member);
+
 
 // 10
-let infos: [string, number];
-infos = ["hello", 0];
-infos[1] = 200;
-console.log(infos[1]);
-infos.push("bonjour")
-console.log(infos);
+
+// let infos: [string, number];
+// infos = ["hello", 0];
+// infos[1] = 200;
+// console.log(infos[1]);
+// infos.push("bonjour")
+// console.log(infos);
 
 
-const surname: string = "Emmanuel";
-console.log(surname);
+// const surname: string = "Emmanuel";
+// console.log(surname);
 
+
+// TYPE ENUM
 
 /*
 ADMIN = 0
 MODERATOR = 1
 SUPPORT = 2
 USER_READ_ONLY = 3
-*/
+ */
 
 
 enum Level  {
-  ADMIN, = 0
-  MODERATOR, # = 1
-  SUPPORT, # = 2
-  USER_READ_ONLY, # = 3
+  ADMIN, // = 0
+  MODERATOR, // = 1
+  SUPPORT, // = 2
+  USER_READ_ONLY, // = 3
 }
 
 const users = {
@@ -257,7 +276,7 @@ console.log(colorName);
 
 
 
-// ANY
+// // TYPE ANY
 
 let anyData: any = "salut";
 console.log(anyData);
@@ -297,7 +316,7 @@ userInfos.pseudo = "123445fglmhi";
 console.log("userInfos 2", userInfos);
 
 
-// UNKNOWN
+// // TYPE UNKNOWN
 
 
 let inputData: unknown;
@@ -315,11 +334,11 @@ if (typeof inputData === 'number') {
 }
 
 
-console.log(anyDataArray);
+// console.log(anyDataArray);
 
 
 
-// VOID
+// // TYPE VOID
 
 
 const gift = (age: number) => {
@@ -333,10 +352,95 @@ const logData = (param) => {
  console.log(logData(gift(20)));
 
 
- // TYPE FUNCTION
+//  // TYPE FUNCTION
 
 
-const greet = (name: string) => {
-  console.log("Hello, " + name.charAt(0).toUpperCase() + name.slice(1).toLowerCase() + "!!");
-}
-console.log(typeof greet("emmanuel"));
+// const greet = (name: string) => {
+   // methode permettant d'écrire string avec le 1er caractère en majuscule: ex "emmanuel" => "Emmanuel"
+//   console.log("Hello, " + name.charAt(0).toUpperCase() + name.slice(1).toLowerCase() + "!!");
+// }
+// console.log(greet("emmanuel"));
+
+
+
+// //
+
+// const gift2 = (number: number) => {
+//   return number + 3
+// }
+
+
+// // // const kdo = gift2(10)
+// // // console.log("le résultat est: ", kdo);
+
+// const displayClg = (param: number) => {
+//   return param
+
+// }
+
+// let age: (number: number) => number;
+// age = gift2
+// console.log("age 1 ",age(20));
+
+// age = displayClg;
+// console.log("age 2 ",age(20));
+
+
+// const buildName = (firstName: string, lastName = "Smith") => {
+
+//   if (lastName) {
+//     return firstName + " " + lastName;
+//   }
+//   return firstName
+
+// }
+
+// let result1 = buildName("Bob", "Adams");
+// console.log(result1);
+
+
+// let result2 = buildName("Bob", "Adams", "Salut");
+// console.log(result2);
+
+
+// let result3 = buildName("Bob", "Adams")
+// console.log(result3);
+
+
+// const buildName = (firstName = "Will", lastName: string) => {
+//       return firstName + " " + lastName;
+
+// }
+
+// let result4 = buildName("Bob", "Smith")
+// console.log(result4);
+
+// let result5 = buildName("bob")
+// console.log(result5);
+
+// let result6 = buildName( undefined,"bob")
+// console.log(result6);
+
+// const divColors = document.querySelector("#colors");
+
+// let colors = function (arg1: string, ...restOfColors: string[]) {
+//   console.log(restOfColors);
+
+//   const h1 = document.createElement("h1");
+//   h1.innerHTML = `Titre ${arg1}`
+//   divColors.appendChild(h1);
+
+//   const ul = document.createElement("ul");
+
+//   for (let index in restOfColors) {
+//     let li = document.createElement("li");
+//     li.innerHTML = restOfColors[index]
+//     ul.appendChild(li)
+//   }
+
+//   divColors.appendChild(ul)
+// }
+
+
+// colors("List 1: ", "green", "blue", "red"); // arg1:list 1, REST ["green", "blue", "red"]
+// colors("List 2: ", "black","pink", "orange");
