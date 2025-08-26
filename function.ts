@@ -104,7 +104,20 @@ function gift3 (age: number, sum: (arg: number) => void ) {
   const ageMember = age + 3
   sum(ageMember)
 }
-gift3(40, (num) => {
-  console.log(num);
-  
+
+gift3(40, (number) => {
+  console.log(number);
 })
+
+function commanderPizza(callback: (message: string) => void) {
+  console.log("Pizza en préparation...");
+
+  // Après un moment, la pizza est prête
+  callback("Ta pizza est prête 🍕 !");
+}
+
+// J'appelle la fonction et je donne un "callback" (une fonction)
+commanderPizza((msg) => {
+  console.log("Message reçu :", msg);
+});
+

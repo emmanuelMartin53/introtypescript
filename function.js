@@ -64,6 +64,15 @@ function gift3(age, sum) {
     var ageMember = age + 3;
     sum(ageMember);
 }
-gift3(40, function (num) {
-    console.log(num);
+gift3(40, function (number) {
+    console.log(number);
+});
+function commanderPizza(callback) {
+    console.log("Pizza en préparation...");
+    // Après un moment, la pizza est prête
+    callback("Ta pizza est prête 🍕 !");
+}
+// J'appelle la fonction et je donne un "callback" (une fonction)
+commanderPizza(function (msg) {
+    console.log("Message reçu :", msg);
 });
