@@ -60,13 +60,13 @@
 // }
 // let buildNameFun: (fname: string, ...rest: string[]) => string = buildName;
 // console.log(buildNameFun);
-function gift3(age, sum) {
-    var ageMember = age + 3;
-    sum(ageMember);
-}
-gift3(40, function (number) {
-    console.log(number);
-});
+// function gift3 (age: number, callback: (number: number) => void ) {
+//   const ageMember = age + 3
+//   callback(ageMember)
+// }
+// gift3(40, (num) => {
+//   console.log(num);
+// })
 function commanderPizza(callback) {
     console.log("Pizza en préparation...");
     // Après un moment, la pizza est prête
@@ -76,3 +76,41 @@ function commanderPizza(callback) {
 commanderPizza(function (msg) {
     console.log("Message reçu :", msg);
 });
+// UNIONS TYPE
+// let firstName: string | number | boolean = "Roger"
+// firstName = true;
+// let names: (string | number)[] = [];
+// names = ["test", 29, true]
+var concat = function (arg1, arg2) {
+    var result;
+    if (typeof arg1 === "number" && typeof arg2 === "number") {
+        result = arg1 + arg2;
+    }
+    else if (typeof arg1 === "string" && typeof arg2 === "string") {
+        result = arg1 + arg2;
+    }
+    else {
+        result = arg1.toString() + arg2.toString();
+    }
+    return result;
+};
+console.log(concat(20, 40));
+console.log(concat("Hello", 40));
+console.log(concat("Hello", "World"));
+var welcome = function (userName) {
+    console.log("Bienvenue ".concat(userName));
+};
+welcome("Emmanuel");
+var getProfileData = function (user) {
+    console.log("id:".concat(user.id, " username ").concat(user.userName));
+};
+getProfileData({ id: 2, userName: "Emmanuel" });
+// fonction indépendante par rapport à la fonction getProfileData
+var invoice = function (productName, user) {
+    console.log("\n      Produit: ".concat(productName.name, "\n      Prix: ").concat(productName.price, "\n      Id client: ").concat(user.id, "\n      Nom du client: ").concat(user.userName, "\n    "));
+};
+var productDetails = {
+    name: "Formation typescript",
+    price: 99
+};
+invoice(productDetails, { id: 12345, userName: "Elodie" });

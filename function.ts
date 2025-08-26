@@ -100,14 +100,15 @@
 // console.log(buildNameFun);
 
 
-function gift3 (age: number, sum: (arg: number) => void ) {
-  const ageMember = age + 3
-  sum(ageMember)
-}
+// function gift3 (age: number, callback: (number: number) => void ) {
+//   const ageMember = age + 3
+//   callback(ageMember)
+// }
+// gift3(40, (num) => {
+//   console.log(num);
 
-gift3(40, (number) => {
-  console.log(number);
-})
+// })
+
 
 function commanderPizza(callback: (message: string) => void) {
   console.log("Pizza en préparation...");
@@ -121,3 +122,74 @@ commanderPizza((msg) => {
   console.log("Message reçu :", msg);
 });
 
+
+// UNIONS TYPE
+
+// let firstName: string | number | boolean = "Roger"
+// firstName = true;
+
+// let names: (string | number)[] = [];
+// names = ["test", 29, true]
+
+const concat = (arg1: number | string, arg2: number | string) => {
+  let result: string | number;
+  if (typeof arg1 === "number" && typeof arg2 === "number") {
+    result = arg1 + arg2
+  } else if (typeof arg1 === "string" && typeof arg2 === "string") {
+    result = arg1 + arg2
+  } else {
+    result = arg1.toString() + arg2.toString()
+  }
+  return result
+}
+
+console.log(concat(20, 40));
+console.log(concat("Hello", 40));
+console.log(concat("Hello", "World"));
+
+// TYPE ALIASES
+
+// type NumStr = number | string;
+
+// let data: NumStr;
+// let userId: NumStr;
+
+// data = 40
+// userId = "40"
+
+
+
+
+type NumStr = number | string
+type ObjIdUser = {id: number, userName: NumStr};
+type ObjNamePrice = {name: string, price: number};
+
+const welcome = (userName: NumStr) => {
+  console.log(`Bienvenue ${userName}`)
+}
+welcome("Emmanuel");
+
+
+
+const getProfileData = (user: ObjIdUser) => {
+  console.log(`id:${user.id} username ${user.userName}`);
+
+}
+getProfileData({id: 2, userName: "Emmanuel"})
+
+// fonction indépendante par rapport à la fonction getProfileData
+const invoice = (productName: ObjNamePrice, user: ObjIdUser ) => {
+  console.log(`
+      Produit: ${productName.name}
+      Prix: ${productName.price}
+      Id client: ${user.id}
+      Nom du client: ${user.userName}
+    `);
+
+}
+let productDetails = {
+  name: "Formation typescript",
+  price: 99
+}
+
+invoice(productDetails, {id: 12345, userName:"Elodie"});
