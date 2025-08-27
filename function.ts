@@ -333,3 +333,56 @@ console.log(value2);
 let value3: unknown | any;
 value3 = null;
 value3 = undefined;
+
+
+TYPE ASSERTIONS
+
+AS
+
+let someValue: unknown= "this is a string";
+
+let strlenght = (someValue as string).length
+console.log(strlenght); // => This is a string
+
+
+ANGLE BRAKET
+
+let someValue: unknown= "this is a string";
+
+let strlenght = (<string>someValue).length
+console.log(strlenght); // => 16
+
+const firstName = document.getElementById("firstName") as HTMLInputElement;
+console.log(typeof firstName); // => object
+console.log(typeof firstName.value); // => string
+
+const age = document.getElementById("age") as HTMLInputElement;
+console.log(typeof age.value); // => string
+
+const firstName = <HTMLInputElement>document.getElementById("firstName")
+console.log(typeof firstName);
+console.log(typeof firstName.value);
+
+
+const firstName = document.getElementById("firstName")
+let inputValue = (firstName as HTMLInputElement).value;
+console.log(typeof inputValue); // => string
+
+
+const firstName = document.getElementById("firstName")
+let inputValue = (<HTMLInputElement>firstName);
+console.log(typeof inputValue.value); // => string
+
+
+const form = document.querySelector("#signup") as HTMLFormElement;
+const firstName = document.querySelector("#firstName") as HTMLInputElement;
+const age = document.querySelector("#age") as HTMLInputElement;
+
+const gender = document.getElementById("gender") as HTMLSelectElement;
+
+Validation du formulaire
+
+form.addEventListener("submit", (event: Event) => {
+  event.preventDefault()
+  console.log(firstName.value, age.valueAsNumber, gender.value );
+})

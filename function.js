@@ -236,3 +236,39 @@ console.log(value2);
 var value3;
 value3 = null;
 value3 = undefined;
+TYPE;
+ASSERTIONS;
+AS;
+var someValue = "this is a string";
+var strlenght = someValue.length;
+console.log(strlenght); // => This is a string
+ANGLE;
+BRAKET;
+var someValue = "this is a string";
+var strlenght = someValue.length;
+console.log(strlenght); // => 16
+var firstName = document.getElementById("firstName");
+console.log(typeof firstName); // => object
+console.log(typeof firstName.value); // => string
+var age = document.getElementById("age");
+console.log(typeof age.value); // => string
+var firstName = document.getElementById("firstName");
+console.log(typeof firstName);
+console.log(typeof firstName.value);
+var firstName = document.getElementById("firstName");
+var inputValue = firstName.value;
+console.log(typeof inputValue); // => string
+var firstName = document.getElementById("firstName");
+var inputValue = firstName;
+console.log(typeof inputValue.value); // => string
+var form = document.querySelector("#signup");
+var firstName = document.querySelector("#firstName");
+var age = document.querySelector("#age");
+var gender = document.getElementById("gender");
+Validation;
+du;
+formulaire;
+form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    console.log(firstName.value, age.valueAsNumber, gender.value);
+});
