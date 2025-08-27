@@ -195,3 +195,44 @@ var sayHello = function (message) {
     }
 };
 sayHello("Boucle infinie");
+TYPE;
+UNDEFINED;
+var myName;
+myName = null;
+console.log(myName); // dans la console => null
+Undefined;
+VS;
+Null;
+console.log(undefined === null); // => false
+console.log(undefined == null); // => true
+console.log(undefined = null); // => null
+// typeof
+console.log(typeof undefined); // => undefined
+console.log(typeof null); // => object
+// !
+console.log(null); // => null
+console.log(!null); // => true! car la valeur existe
+console.log(!!null); // => false
+// return undefined | null
+var myFunction = function (arg) {
+    return arg;
+};
+var result = myFunction("Hello");
+if (result != null) {
+    console.log(typeof result);
+}
+console.log(null + 200); // 200
+var element = document.querySelector("elementFictif");
+console.log(element); // Null
+console.log(undefined + 200); // NaN (Not A Number)
+var users = {};
+console.log(users.age); // => object vide
+var value; // TS number
+console.log(value); // undefined
+var value1; // undefined
+console.log(value1);
+var value2 = null; // null
+console.log(value2);
+var value3;
+value3 = null;
+value3 = undefined;

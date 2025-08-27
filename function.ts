@@ -274,3 +274,62 @@ const sayHello = (message) => {
   }
 }
 sayHello("Boucle infinie")
+
+
+TYPE UNDEFINED
+
+let myName;
+myName = null;
+console.log(myName); // dans la console => null
+
+Undefined VS Null
+console.log(undefined === null); // => false
+console.log(undefined == null); // => true
+console.log(undefined = null); // => null
+
+// typeof
+
+console.log(typeof undefined); // => undefined
+console.log(typeof null); // => object
+
+// !
+
+console.log(null); // => null
+console.log(!null); // => true! car la valeur existe
+console.log(!!null); // => false
+
+
+// return undefined | null
+
+const myFunction = (arg: string): string|null|undefined => {
+  return arg
+}
+
+const result = myFunction("Hello");
+
+if (result != null) {
+  console.log(typeof result);
+}
+
+console.log(null + 200); // 200
+
+const element = document .querySelector("elementFictif");
+console.log(element); // Null
+
+console.log(undefined + 200); // NaN (Not A Number)
+
+const users: any = {}
+console.log(users.age); // => object vide
+
+let value: number; // TS number
+console.log(value); // undefined
+
+let value1: undefined; // undefined
+console.log(value1);
+
+let value2: null = null; // null
+console.log(value2);
+
+let value3: unknown | any;
+value3 = null;
+value3 = undefined;
