@@ -1,113 +1,113 @@
-// // TYPE FUNCTION
+// TYPE FUNCTION
 
 
-// const greet = (name: string) => {
-//   // methode permettant d'écrire string avec le 1er caractère en majuscule: ex "emmanuel" => "Emmanuel"
-//   console.log("Hello, " + name.charAt(0).toUpperCase() + name.slice(1).toLowerCase() + "!!");
-// }
-// console.log(greet("emmanuel"));
+const greet = (name: string) => {
+  // methode permettant d'écrire string avec le 1er caractère en majuscule: ex "emmanuel" => "Emmanuel"
+  console.log("Hello, " + name.charAt(0).toUpperCase() + name.slice(1).toLowerCase() + "!!");
+}
+console.log(greet("emmanuel"));
 
 
 
-// //
+//
 
-// const gift2 = (number: number) => {
-//   return number + 3
-// }
-
-
-// // // const kdo = gift2(10)
-// // // console.log("le résultat est: ", kdo);
-
-// const displayClg = (param: number) => {
-//   return param
-
-// }
-
-// let age: (number: number) => number;
-// age = gift2
-// console.log("age 1 ",age(20));
-
-// age = displayClg;
-// console.log("age 2 ",age(20));
+const gift2 = (number: number) => {
+  return number + 3
+}
 
 
-// const buildName = (firstName: string, lastName = "Smith") => {
+// // const kdo = gift2(10)
+// // console.log("le résultat est: ", kdo);
 
-//   if (lastName) {
-//     return firstName + " " + lastName;
-//   }
-//   return firstName
+const displayClg = (param: number) => {
+  return param
 
-// }
+}
 
-// let result1 = buildName("Bob", "Adams");
-// console.log(result1);
+let age: (number: number) => number;
+age = gift2
+console.log("age 1 ",age(20));
 
-
-// let result2 = buildName("Bob", "Adams", "Salut");
-// console.log(result2);
-
-
-// let result3 = buildName("Bob", "Adams")
-// console.log(result3);
+age = displayClg;
+console.log("age 2 ",age(20));
 
 
-// const buildName = (firstName = "Will", lastName: string) => {
-//       return firstName + " " + lastName;
+const buildName = (firstName: string, lastName = "Smith") => {
 
-// }
+  if (lastName) {
+    return firstName + " " + lastName;
+  }
+  return firstName
 
-// let result4 = buildName("Bob", "Smith")
-// console.log(result4);
+}
 
-// let result5 = buildName("bob")
-// console.log(result5);
-
-// let result6 = buildName( undefined,"bob")
-// console.log(result6);
-
-// const divColors = document.querySelector("#colors");
-
-// let colors = function (arg1: string, ...restOfColors: string[]) {
-//   console.log(restOfColors);
-
-//   const h1 = document.createElement("h1");
-//   h1.innerHTML = `Titre ${arg1}`
-//   divColors.appendChild(h1);
-
-//   const ul = document.createElement("ul");
-
-//   for (let index in restOfColors) {
-//     let li = document.createElement("li");
-//     li.innerHTML = restOfColors[index]
-//     ul.appendChild(li)
-//   }
-
-//   divColors.appendChild(ul)
-// }
+let result1 = buildName("Bob", "Adams");
+console.log(result1);
 
 
-// colors("List 1: ", "green", "blue", "red"); // arg1:list 1, REST ["green", "blue", "red"]
-// colors("List 2: ", "black","pink", "orange");
+let result2 = buildName("Bob", "Adams", "Salut");
+console.log(result2);
 
 
-// const buildName = (firstName: string, ...restOfName: string[]) => {
-//   return firstName + " " + restOfName.join(" ");
-// }
-
-// let buildNameFun: (fname: string, ...rest: string[]) => string = buildName;
-// console.log(buildNameFun);
+let result3 = buildName("Bob", "Adams")
+console.log(result3);
 
 
-// function gift3 (age: number, callback: (number: number) => void ) {
-//   const ageMember = age + 3
-//   callback(ageMember)
-// }
-// gift3(40, (num) => {
-//   console.log(num);
+const buildName = (firstName = "Will", lastName: string) => {
+      return firstName + " " + lastName;
 
-// })
+}
+
+let result4 = buildName("Bob", "Smith")
+console.log(result4);
+
+let result5 = buildName("bob")
+console.log(result5);
+
+let result6 = buildName( undefined,"bob")
+console.log(result6);
+
+const divColors = document.querySelector("#colors");
+
+let colors = function (arg1: string, ...restOfColors: string[]) {
+  console.log(restOfColors);
+
+  const h1 = document.createElement("h1");
+  h1.innerHTML = `Titre ${arg1}`
+  divColors.appendChild(h1);
+
+  const ul = document.createElement("ul");
+
+  for (let index in restOfColors) {
+    let li = document.createElement("li");
+    li.innerHTML = restOfColors[index]
+    ul.appendChild(li)
+  }
+
+  divColors.appendChild(ul)
+}
+
+
+colors("List 1: ", "green", "blue", "red"); // arg1:list 1, REST ["green", "blue", "red"]
+colors("List 2: ", "black","pink", "orange");
+
+
+const buildName = (firstName: string, ...restOfName: string[]) => {
+  return firstName + " " + restOfName.join(" ");
+}
+
+let buildNameFun: (fname: string, ...rest: string[]) => string = buildName;
+console.log(buildNameFun);
+
+
+function gift3 (age: number, callback: (number: number) => void ) {
+  const ageMember = age + 3
+  callback(ageMember)
+}
+gift3(40, (num) => {
+  console.log(num);
+
+})
 
 
 function commanderPizza(callback: (message: string) => void) {
@@ -123,13 +123,13 @@ commanderPizza((msg) => {
 });
 
 
-// UNIONS TYPE
+UNIONS TYPE
 
-// let firstName: string | number | boolean = "Roger"
-// firstName = true;
+let firstName: string | number | boolean = "Roger"
+firstName = true;
 
-// let names: (string | number)[] = [];
-// names = ["test", 29, true]
+let names: (string | number)[] = [];
+names = ["test", 29, true]
 
 const concat = (arg1: number | string, arg2: number | string) => {
   let result: string | number;
@@ -147,15 +147,15 @@ console.log(concat(20, 40));
 console.log(concat("Hello", 40));
 console.log(concat("Hello", "World"));
 
-// TYPE ALIASES
+TYPE ALIASES
 
-// type NumStr = number | string;
+type NumStr = number | string;
 
-// let data: NumStr;
-// let userId: NumStr;
+let data: NumStr;
+let userId: NumStr;
 
-// data = 40
-// userId = "40"
+data = 40
+userId = "40"
 
 
 
@@ -193,3 +193,84 @@ let productDetails = {
 }
 
 invoice(productDetails, {id: 12345, userName:"Elodie"});
+
+
+TYPE LITERAL
+
+let
+let PI1 = 3.14 // type number
+
+const
+const PI: = 3.14 // 3.14
+const API_KEY = 'FRDFDGDGF4254' // FRDFDGDGF4254
+const count = 200; // 200
+const booleanValue = false; // false
+
+
+literal Type
+
+let PI1: 3.14;
+
+type GetResultFormat=  "getStringValue" | "getSquare";
+
+function total (arg1: number, arg2: number, totalversion: GetResultFormat) {
+  let result;
+    if (totalversion === "getStringValue") {
+      result = arg1.toString() + arg2.toString(); // string
+
+    } else if (totalversion === "getSquare") {
+      const val = arg1 + arg2;
+      result = val ** 2 // valeur au carré
+
+    } else {
+      result = arg1 + arg2 // number
+    }
+    return result
+}
+const totalOne = total(20, 10, 'getStringValue');
+console.log(totalOne); //2010
+
+
+const totalTwo = total(20, 10, 'getSquare') // TS Error
+console.log(totalTwo);
+
+
+TYPE NEVER
+
+type AcceptedValues = string | number | boolean;
+
+function format(value: AcceptedValues) {
+  if (typeof value === "string") {
+    return value.length;
+
+  } else if (typeof value === "number") {
+    return value.toString()
+
+  } else {
+    const verifyCases: never = value; // TS error
+  }
+}
+
+const throwError = (message): never =>  {
+  throw new Error(message) // STOP
+}
+
+const getTotal = (arg: number) => {
+  if (arg < 5) {
+    return throwError("Attention le total < 5!!! ")
+  } else if (arg === 5) {
+    console.log(arg); // Pas de return , TS Never => undefined
+  } else {
+    return arg + 10;  // TS getTotal => Number
+  }
+}
+
+
+const sayHello = (message) => {
+  let index = 0
+  while (index < 5) {
+    console.log(message)
+    index++
+  }
+}
+sayHello("Boucle infinie")
