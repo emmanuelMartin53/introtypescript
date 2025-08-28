@@ -81,4 +81,4 @@ var Car = /** @class */ (function () {
 }());
 var citroen = new Car("White", 5);
 var newColor = citroen.color = "black";
-console.log(citroen);
+console.log(newColor);
