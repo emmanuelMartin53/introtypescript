@@ -1,73 +1,65 @@
-// LES CLASSES
+ // LES CLASSES
 
-class Invoice {
-  client: string;
-  product: string;
-  price: number;
+// class Invoice {
+//   client: string;
+//   product: string;
+//   price: number;
 
-  constructor (client: string, product: string, price: number) {
-    this.client = client;
-    this.product = product;
-    this.price = price;
-  }
+//   constructor (client: string, product: string, price: number) {
+//     this.client = client;
+//     this.product = product;
+//     this.price = price;
+//   }
 
-}
+// }
 
-const invoice1 = new Invoice('Dora', 'Template', 45);
-const invoice2 = new Invoice('Nora', 'SEO', 200);
-
-let invoiceArray: Invoice[] = []
-invoiceArray.push(invoice1, invoice2)
-console.log(invoiceArray);
+// const invoice1 = new Invoice('Dora', 'TEmplate', 45);
+// const invoice2 = new Invoice("Nora","SEO", 200);
+// console.log(invoice1,invoice2);
 
 
-// Héritage et Polymorphisme
-
+// Héritage
 
 class Mother {
-  name: string;
-  color: string;
-  eyes: number;
 
-  constructor (name: string, color: string, eyes: number) {
-    this.name = name;
-    this.color = color;
-    this.eyes = eyes;
+  constructor (public name: string, private color: string, protected eyes: number) {}
+
+  private speak () {
+    console.log(`Je m'appelle ${this.name} et j'ai les cheveux ${this.color}`);
   }
 
-  speak () {
-    console.log(`je suis ${this.name} et j'ai les cheveux ${this.color}`);
+  //Getter
 
+  getName () {
+    return this.name
   }
+
+  getColor () {
+    return this.color
+  }
+
+  // Setter
+
+  setColor (newColor: string) {
+    this.color = newColor
+  }
+
 }
-const person1 = new Mother("marie", "Chatain", 2);
-// console.log(person1);
-// person1.speak();
-
 
 class Children extends Mother {
-   speak () {
-    console.log(`I am ${this.name} and i have  ${this.color} hair`);
+  getData () {
+    /*
+      Public: propriété accessible partout et en dehors de la classe
+      Private: propriété accessible uniquement à l'intérieur de la classe Mother
+      Protected: propriété accessible uniquement dans la class Mère ou la class Enfant
+    */
+    return this.eyes
   }
-  speakMotherLang() {
-    super.speak()
-  }
-}
-const person2: Mother = new Children("Déméter", "Brown", 2)
-// console.log(person2);
-// person2.speakMotherLang();
+
+};
 
 
-class Random {
-    name: string;
-    color: string;
-    eyes: number;
-
-    constructor (name: string, color: string, eyes: number) {
-      this.name = name;
-      this.color = color;
-      this.eyes = eyes;
-    }
-}
-
-const person3: Mother = new Random("Tom", "Marron", 2)
+const person1 = new Mother ("Marie", "Chatain", 2)
+const person2 = new Children("Audrey", "Chatain", 2)
+person2.getData();
+console.log(person2.getData());
