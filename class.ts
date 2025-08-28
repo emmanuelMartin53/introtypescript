@@ -43,7 +43,6 @@ class Mother {
   setColor (newColor: string) {
     this.color = newColor
   }
-
 }
 
 class Children extends Mother {
