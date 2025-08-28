@@ -70,3 +70,15 @@ var person1 = new Mother("Marie", "Chatain", 2);
 var person2 = new Children("Audrey", "Chatain", 2);
 person2.getData();
 console.log(person2.getData());
+var Car = /** @class */ (function () {
+    // readonly color: string
+    // public gears: number = 5
+    function Car(color, gears) {
+        this.color = color;
+        this.gears = gears;
+    }
+    return Car;
+}());
+var citroen = new Car("White", 5);
+var newColor = citroen.color = "black";
+console.log(citroen);

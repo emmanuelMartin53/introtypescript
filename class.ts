@@ -58,8 +58,19 @@ class Children extends Mother {
 
 };
 
-
 const person1 = new Mother ("Marie", "Chatain", 2)
 const person2 = new Children("Audrey", "Chatain", 2)
 person2.getData();
 console.log(person2.getData());
+
+
+class Car {
+  // readonly color: string
+  // public gears: number = 5
+
+  constructor ( readonly color: string, public gears: number) {}
+}
+
+let citroen = new Car ("White", 5);
+let newColor = citroen.color = "black"
+console.log(citroen);
