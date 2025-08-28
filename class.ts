@@ -73,4 +73,4 @@ class Car {
 
 let citroen = new Car ("White", 5);
 let newColor = citroen.color = "black"
-console.log(citroen);
+console.log(newColor);
