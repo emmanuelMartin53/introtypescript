@@ -34,32 +34,51 @@
 
 // MISSION: ENREGISTRER TYPE: STRING
 
-class Database<T extends string | number> {
-  data: Array<T> = [];
+// class Database<T extends string | number> {
+//   data: Array<T> = [];
 
-  saveData(value: T) {
-    this.data.push(value)
-  }
+//   saveData(value: T) {
+//     this.data.push(value)
+//   }
 
-  getAllDatas() {
-    return [...this.data]
-  }
-}
+//   getAllDatas() {
+//     return [...this.data]
+//   }
+// }
 
-const stringData = new Database<string>() // type database
-stringData.saveData("Emmanuel");
-stringData.saveData("Caco");
-const result1 = stringData.getAllDatas();
-console.log(result1);
+// const stringData = new Database<string>() // type database
+// stringData.saveData("Emmanuel");
+// stringData.saveData("Caco");
+// const result1 = stringData.getAllDatas();
+// console.log(result1);
 
 
-const numberOrStringData = new Database<number | string>();
-numberOrStringData.saveData(200);
-const result2 = numberOrStringData.getAllDatas();
-console.log(result2);
+// const numberOrStringData = new Database<number | string>();
+// numberOrStringData.saveData(200);
+// const result2 = numberOrStringData.getAllDatas();
+// console.log(result2);
 
 
 // const objectData = new Database<object>();
 // objectData.saveData({name: "Aérys", game: "FFVII"});
 // const result3 = objectData.getAllDatas();
 // console.log(result3);
+
+
+// TYPE PARTIALS
+
+interface Todo {
+  title: string;
+  description: string;
+}
+
+function addTodo(title: string, description: string): Todo {
+  let myTodo: Partial<Todo> = {}
+  myTodo.title = title;
+  myTodo.description = description;
+  return myTodo as Todo;
+
+}
+
+const todo = addTodo("Sport", 'Faire du foot');
+console.log(todo);
