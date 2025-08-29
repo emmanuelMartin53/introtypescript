@@ -1,4 +1,4 @@
-// INTERFACES
+// // INTERFACES
 
 // class Mother {
 //   name: string;
@@ -18,7 +18,7 @@
 // console.log(marie);
 
 
-// interface Person {
+// interface Person1 {
 //   name: string;
 //   readonly eyes: number;
 //   speak(arg: string): string; // type: string + return string
@@ -56,7 +56,7 @@
 // console.log(cyclope);
 
 
-// INTERFACE AVEC CLASSES
+// // INTERFACE AVEC CLASSES
 
 // const form = document.getElementById("signup") as HTMLFormElement;
 // const firstname = document.getElementById("firstname") as HTMLInputElement;
@@ -71,7 +71,7 @@
 //   telepathy(): string;
 // }
 
-// class Person implements HumanSounds {
+// class Person2 implements HumanSounds {
 //   constructor (readonly name: string, private age: number) {}
 
 //   talk () {
@@ -108,10 +108,6 @@
 //   }
 // })
 
-//     alienUser = new Alien(firstname.value, +age.value);
-//     console.log(alienUser, alienUser.telepathy())
-//   }
-// })
 
 
 
@@ -162,28 +158,28 @@
 
 // CLASSE ABSTRAITE
 
-abstract class Person {
+// abstract class Person {
 
-  constructor (public name: string) {}
+//   constructor (public name: string) {}
 
-  walk() {
-    console.log("Je marche");
+//   walk() {
+//     console.log("Je marche");
 
-  }
-  abstract updateName(name: string): void;
-}
+//   }
+//   abstract updateName(name: string): void;
+// }
 
 
-class Child extends Person {
+// class Child extends Person {
 
-   updateName(name: string) {
-    this.name = name;
-    console.log(this.name);
-   }
-}
+//    updateName(name: string) {
+//     this.name = name;
+//     console.log(this.name);
+//    }
+// }
 
-const aerys = new Child("Aérys");
-console.log(aerys);
+// const aerys = new Child("Aérys");
+// console.log(aerys);
 
-aerys.updateName("Tifa");
-aerys.walk()
+// aerys.updateName("Tifa");
+// aerys.walk()
