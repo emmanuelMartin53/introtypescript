@@ -40,43 +40,41 @@
 // cyclope.name = "Gorgone"
 // console.log(cyclope);
 // INTERFACE AVEC CLASSES
-var form = document.getElementById("signup");
-var firstname = document.getElementById("firstname");
-var age = document.querySelector("#age");
-var species = document.querySelector("#species");
-var Person = /** @class */ (function () {
-    function Person(name, age) {
-        this.name = name;
-        this.age = age;
-    }
-    Person.prototype.talk = function () {
-        return "Je m'appelle ".concat(this.name);
-    };
-    return Person;
-}());
-var Alien = /** @class */ (function () {
-    function Alien(name, age) {
-        this.name = name;
-        this.age = age;
-    }
-    Alien.prototype.telepathy = function () {
-        return "Je m'appelle ".concat(this.name, " Je suis un super-heros de ").concat(this.age, " ans");
-    };
-    return Alien;
-}());
-form.addEventListener("submit", function (event) {
-    event.preventDefault();
-    var humanUser;
-    var alienUser;
-    if (species.value === "human") {
-        humanUser = new Person(firstname.value, age.valueAsNumber);
-        console.log(humanUser, humanUser.talk());
-    }
-    else {
-        alienUser = new Alien(firstname.value, +age.value);
-        console.log(alienUser, alienUser.telepathy());
-    }
-});
+// const form = document.getElementById("signup") as HTMLFormElement;
+// const firstname = document.getElementById("firstname") as HTMLInputElement;
+// const age = document.querySelector("#age") as HTMLInputElement;
+// const species = document.querySelector("#species") as HTMLSelectElement;
+// interface HumanSounds {
+//   talk(): string;
+// }
+// interface AlienSounds {
+//   telepathy(): string;
+// }
+// class Person implements HumanSounds {
+//   constructor (readonly name: string, private age: number) {}
+//   talk () {
+//     return `Je m'appelle ${this.name}`
+//   }
+// }
+// class Alien {
+//    constructor (readonly name: string, private age: number) {}
+//    telepathy () {
+//      return `Je m'appelle ${this.name} Je suis un super-heros de ${this.age} ans`
+//    }
+// }
+//   newUser:
+// form.addEventListener("submit", (event: Event) => {
+//   event.preventDefault();
+//   let humanUser: HumanSounds;
+//   let alienUser: AlienSounds;
+//   if (species.value === "human") {
+//     humanUser = new Person (firstname.value, age.valueAsNumber);
+//     console.log(humanUser, humanUser.talk());
+//   } else {
+//     alienUser = new Alien(firstname.value, +age.value);
+//     console.log(alienUser, alienUser.telepathy())
+//   }
+// })
 // const emmanuel = new Person ("Emmanuel", 47)
 // console.log(emmanuel.talk());
 // const superman = new Alien ("Clark", 33)
@@ -87,3 +85,20 @@ form.addEventListener("submit", function (event) {
 // humanMember = []
 // humanMember.push(emmanuel)
 // console.log(humanMember);
+var Person = /** @class */ (function () {
+    function Person(name) {
+        this.name = name;
+    }
+    Person.prototype.walk = function () {
+        console.log("Je marche");
+    };
+    Person.talk = function () {
+        console.log("Je suis une personne ".concat(this.age));
+    };
+    Person.age = 30;
+    return Person;
+}());
+var person1 = new Person("Emmanuel");
+// person1.talk()
+Person.talk(); // Je suis une personne
+// Person.prototype.talk(); // Je suis une personne
