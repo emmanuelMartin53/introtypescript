@@ -135,26 +135,55 @@
 // console.log(humanMember);
 
 
-class Person {
+// class Person {
 
- static age: number = 30;
+//  static age: number = 30;
 
-  constructor (private name : string) {}
+//   constructor (private name : string) {}
+
+//   walk() {
+//     console.log("Je marche");
+
+//   }
+
+//   static talk() {
+//     console.log(`Je suis une personne ${this.age}` );
+//   }
+// }
+
+// const person1 = new Person("Emmanuel");
+// // person1.talk()
+
+
+// Person.talk() // Je suis une personne
+
+// Person.prototype.talk(); // Je suis une personne
+
+
+// CLASSE ABSTRAITE
+
+abstract class Person {
+
+  constructor (public name: string) {}
 
   walk() {
     console.log("Je marche");
 
   }
-
-  static talk() {
-    console.log(`Je suis une personne ${this.age}` );
-  }
+  abstract updateName(name: string): void;
 }
 
-const person1 = new Person("Emmanuel");
-// person1.talk()
 
+class Child extends Person {
 
-Person.talk() // Je suis une personne
+   updateName(name: string) {
+    this.name = name;
+    console.log(this.name);
+   }
+}
 
-// Person.prototype.talk(); // Je suis une personne
+const aerys = new Child("Aérys");
+console.log(aerys);
+
+aerys.updateName("Tifa");
+aerys.walk()
