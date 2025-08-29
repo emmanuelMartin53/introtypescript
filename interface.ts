@@ -87,6 +87,8 @@ class Alien {
    }
 }
 
+  newUser:
+
 form.addEventListener("submit", (event: Event) => {
   event.preventDefault();
 
