@@ -62,6 +62,7 @@
 //      return `Je m'appelle ${this.name} Je suis un super-heros de ${this.age} ans`
 //    }
 // }
+//   newUser:
 // form.addEventListener("submit", (event: Event) => {
 //   event.preventDefault();
 //   let humanUser: HumanSounds;
@@ -70,6 +71,10 @@
 //     humanUser = new Person (firstname.value, age.valueAsNumber);
 //     console.log(humanUser, humanUser.talk());
 //   } else {
+//     alienUser = new Alien(firstname.value, +age.value);
+//     console.log(alienUser, alienUser.telepathy())
+//   }
+// })
 //     alienUser = new Alien(firstname.value, +age.value);
 //     console.log(alienUser, alienUser.telepathy())
 //   }
@@ -84,3 +89,20 @@
 // humanMember = []
 // humanMember.push(emmanuel)
 // console.log(humanMember);
+var Person = /** @class */ (function () {
+    function Person(name) {
+        this.name = name;
+    }
+    Person.prototype.walk = function () {
+        console.log("Je marche");
+    };
+    Person.talk = function () {
+        console.log("Je suis une personne ".concat(this.age));
+    };
+    Person.age = 30;
+    return Person;
+}());
+var person1 = new Person("Emmanuel");
+// person1.talk()
+Person.talk(); // Je suis une personne
+// Person.prototype.talk(); // Je suis une personne

@@ -88,6 +88,8 @@
 
 // }
 
+//   newUser:
+
 // form.addEventListener("submit", (event: Event) => {
 //   event.preventDefault();
 
@@ -100,6 +102,11 @@
 //     console.log(humanUser, humanUser.talk());
 
 //   } else {
+
+//     alienUser = new Alien(firstname.value, +age.value);
+//     console.log(alienUser, alienUser.telepathy())
+//   }
+// })
 
 //     alienUser = new Alien(firstname.value, +age.value);
 //     console.log(alienUser, alienUser.telepathy())
@@ -126,3 +133,28 @@
 // humanMember = []
 // humanMember.push(emmanuel)
 // console.log(humanMember);
+
+
+class Person {
+
+ static age: number = 30;
+
+  constructor (private name : string) {}
+
+  walk() {
+    console.log("Je marche");
+
+  }
+
+  static talk() {
+    console.log(`Je suis une personne ${this.age}` );
+  }
+}
+
+const person1 = new Person("Emmanuel");
+// person1.talk()
+
+
+Person.talk() // Je suis une personne
+
+// Person.prototype.talk(); // Je suis une personne
