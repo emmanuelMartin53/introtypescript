@@ -58,54 +58,53 @@
 
 // INTERFACE AVEC CLASSES
 
-const form = document.getElementById("signup") as HTMLFormElement;
-const firstname = document.getElementById("firstname") as HTMLInputElement;
-const age = document.querySelector("#age") as HTMLInputElement;
-const species = document.querySelector("#species") as HTMLSelectElement;
+// const form = document.getElementById("signup") as HTMLFormElement;
+// const firstname = document.getElementById("firstname") as HTMLInputElement;
+// const age = document.querySelector("#age") as HTMLInputElement;
+// const species = document.querySelector("#species") as HTMLSelectElement;
 
-interface HumanSounds {
-  talk(): string;
-}
+// interface HumanSounds {
+//   talk(): string;
+// }
 
-interface AlienSounds {
-  telepathy(): string;
-}
+// interface AlienSounds {
+//   telepathy(): string;
+// }
 
-class Person implements HumanSounds {
-  constructor (readonly name: string, private age: number) {}
+// class Person implements HumanSounds {
+//   constructor (readonly name: string, private age: number) {}
 
-  talk () {
-    return `Je m'appelle ${this.name}`
-  }
-}
+//   talk () {
+//     return `Je m'appelle ${this.name}`
+//   }
+// }
 
-class Alien {
-   constructor (readonly name: string, private age: number) {}
+// class Alien {
+//    constructor (readonly name: string, private age: number) {}
 
-   telepathy () {
-     return `Je m'appelle ${this.name} Je suis un super-heros de ${this.age} ans`
-   }
+//    telepathy () {
+//      return `Je m'appelle ${this.name} Je suis un super-heros de ${this.age} ans`
+//    }
 
-}
+// }
 
-form.addEventListener("submit", (event: Event) => {
-  event.preventDefault();
+// form.addEventListener("submit", (event: Event) => {
+//   event.preventDefault();
 
-  let humanUser: HumanSounds;
-  let alienUser: AlienSounds;
+//   let humanUser: HumanSounds;
+//   let alienUser: AlienSounds;
 
-  if (species.value === "human") {
+//   if (species.value === "human") {
 
-    humanUser = new Person (firstname.value, age.valueAsNumber);
-    console.log(humanUser, humanUser.talk());
+//     humanUser = new Person (firstname.value, age.valueAsNumber);
+//     console.log(humanUser, humanUser.talk());
 
-  } else {
+//   } else {
 
-    alienUser = new Alien(firstname.value, +age.value);
-    console.log(alienUser, alienUser.telepathy())
-  }
-})
-
+//     alienUser = new Alien(firstname.value, +age.value);
+//     console.log(alienUser, alienUser.telepathy())
+//   }
+// })
 
 
 
