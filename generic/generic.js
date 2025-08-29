@@ -1,8 +1,6 @@
 // GENERIQUES
 function addTodo(title, description) {
-    var myTodo = {};
-    myTodo.title = title;
-    myTodo.description = description;
+    var myTodo = { title: title, description: description };
     return myTodo;
 }
 var todo = addTodo("Sport", 'Faire du foot');

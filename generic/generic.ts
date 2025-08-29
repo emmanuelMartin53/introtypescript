@@ -73,9 +73,7 @@ interface Todo {
 }
 
 function addTodo(title: string, description: string): Todo {
-  let myTodo: Partial<Todo> = {}
-  myTodo.title = title;
-  myTodo.description = description;
+  let myTodo: Todo = {title, description}
   return myTodo as Todo;
 
 }
