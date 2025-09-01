@@ -183,27 +183,45 @@
 
 // type T0 = Exclude<"a" | "b" | "c" | (() => void), Function >;
 
-type Easing = "ease-in" | "ease-out" | "ease-in-out"
+// type Easing = "ease-in" | "ease-out" | "ease-in-out"
 
-type Animate = Exclude<Easing, "ease-out">
+// type Animate = Exclude<Easing, "ease-out">
 
-class UIElement {
-  animate (x: number, y:number, easing: Animate) {
-    if (easing === "ease-in") {
-      console.log("ease-in");
-    }
+// class UIElement {
+//   animate (x: number, y:number, easing: Animate) {
+//     if (easing === "ease-in") {
+//       console.log("ease-in");
+//     }
 
-    // if (easing === "ease-out") {
-    //   console.log("ease-out");
-    // }
+//     // if (easing === "ease-out") {
+//     //   console.log("ease-out");
+//     // }
 
-    if (easing === "ease-in-out") {
-      console.log("ease-in-out");
-    }
+//     if (easing === "ease-in-out") {
+//       console.log("ease-in-out");
+//     }
 
-  }
+//   }
+// }
+
+// let button = new UIElement()
+// button.animate(0, 0, "ease-in")
+// console.log(button);
+
+
+
+// TYPE EXTRACT
+
+type Colors = "red" | "bule" | "orange" | "green"
+
+
+type MyColors = "red" | "purple" | "green"
+
+type AcceptedColors = Extract<Colors, MyColors> // Ce type, dans le cas présent compare les type Colors et My Colors
+
+
+const clgColors = (param1: AcceptedColors) => {
+  console.log(param1);
 }
 
-let button = new UIElement()
-button.animate(0, 0, "ease-in")
-console.log(button);
+clgColors("blue") // "blue" n'est pas accepté car il n'existe pas dans les type Colors et MyColors
