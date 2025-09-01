@@ -1,11 +1,20 @@
 // GENERIQUES
-var todo1 = {
-    title: "Sport",
-    // description: "Footing",
-    completed: true
-};
-console.log(todo1);
-var todo = {
-    description: "Regarder une vidéo sur le pastel sec",
-};
-console.log(todo);
+var UIElement = /** @class */ (function () {
+    function UIElement() {
+    }
+    UIElement.prototype.animate = function (x, y, easing) {
+        if (easing === "ease-in") {
+            console.log("ease-in");
+        }
+        // if (easing === "ease-out") {
+        //   console.log("ease-out");
+        // }
+        if (easing === "ease-in-out") {
+            console.log("ease-in-out");
+        }
+    };
+    return UIElement;
+}());
+var button = new UIElement();
+button.animate(0, 0, "ease-in");
+console.log(button);

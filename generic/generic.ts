@@ -150,30 +150,60 @@
 
 // je crée une interface
 
-interface Todo {
-  title: string;
-  description : string;
-  completed: boolean;
-}
+// interface Todo {
+//   title: string;
+//   description : string;
+//   completed: boolean;
+// }
 
-type TodoPreview = Pick<Todo, "title" | "completed">
+// type TodoPreview = Pick<Todo, "title" | "completed">
 
-let todo1: TodoPreview = {
-  title: "Sport",
-  // description: "Footing",
-  completed: true
-}
+// let todo1: TodoPreview = {
+//   title: "Sport",
+//   // description: "Footing",
+//   completed: true
+// }
 
-console.log(todo1);
+// console.log(todo1);
 
 
 // TYPE OMIT
 
-type TodoPreview1 = Omit<Todo, "title" | "completed">
+// type TodoPreview1 = Omit<Todo, "title" | "completed">
 
 
-let todo: TodoPreview1 = {
-  description: "Regarder une vidéo sur le pastel sec",
+// let todo: TodoPreview1 = {
+//   description: "Regarder une vidéo sur le pastel sec",
+// }
+
+// console.log(todo);
+
+
+// TYPE EXCLUDE
+
+// type T0 = Exclude<"a" | "b" | "c" | (() => void), Function >;
+
+type Easing = "ease-in" | "ease-out" | "ease-in-out"
+
+type Animate = Exclude<Easing, "ease-out">
+
+class UIElement {
+  animate (x: number, y:number, easing: Animate) {
+    if (easing === "ease-in") {
+      console.log("ease-in");
+    }
+
+    // if (easing === "ease-out") {
+    //   console.log("ease-out");
+    // }
+
+    if (easing === "ease-in-out") {
+      console.log("ease-in-out");
+    }
+
+  }
 }
 
-console.log(todo);
+let button = new UIElement()
+button.animate(0, 0, "ease-in")
+console.log(button);
