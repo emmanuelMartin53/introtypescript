@@ -108,41 +108,72 @@
 
 // Je crée un interface
 
-interface Superheros {
-  name: string;
-  power: number;
-  marvel: boolean;
-  dcComics: boolean;
+// interface Superheros {
+//   name: string;
+//   power: number;
+//   marvel: boolean;
+//   dcComics: boolean;
+// }
+
+// type Name = "Batman" | "Spiderman" | "Superman";
+
+
+// let heros: Record<Name, Superheros> = {
+//   Batman: {
+//     name: "Batman",
+//     power: 60,
+//     marvel: false,
+//     dcComics: true
+//   },
+
+//   Spiderman: {
+//     name: "Spiderman",
+//     power: 60,
+//     marvel: true,
+//     dcComics: false
+//   },
+
+//   Superman: {
+//     name: "Superman",
+//     power: 100,
+//     marvel: false,
+//     dcComics: true
+//   },
+// }
+
+// console.log(heros);
+
+// heros.Spiderman.marvel && console.log(`${heros.Spiderman.name} est Marvel`);
+
+
+// TYPE PICK
+
+// je crée une interface
+
+interface Todo {
+  title: string;
+  description : string;
+  completed: boolean;
 }
 
-type Name = "Batman" | "Spiderman" | "Superman";
+type TodoPreview = Pick<Todo, "title" | "completed">
 
-
-let heros: Record<Name, Superheros> = {
-  Batman: {
-    name: "Batman",
-    power: 60,
-    marvel: false,
-    dcComics: true
-  },
-
-  Spiderman: {
-    name: "Spiderman",
-    power: 60,
-    marvel: true,
-    dcComics: false
-  },
-
-  Superman: {
-    name: "Superman",
-    power: 100,
-    marvel: false,
-    dcComics: true
-  },
+let todo1: TodoPreview = {
+  title: "Sport",
+  // description: "Footing",
+  completed: true
 }
 
-console.log(heros);
-
-heros.Spiderman.marvel && console.log(`${heros.Spiderman.name} est Marvel`);
+console.log(todo1);
 
 
+// TYPE OMIT
+
+type TodoPreview1 = Omit<Todo, "title" | "completed">
+
+
+let todo: TodoPreview1 = {
+  description: "Regarder une vidéo sur le pastel sec",
+}
+
+console.log(todo);
