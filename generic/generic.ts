@@ -212,16 +212,35 @@
 
 // TYPE EXTRACT
 
-type Colors = "red" | "bule" | "orange" | "green"
+// type Colors = "red" | "bule" | "orange" | "green"
 
 
-type MyColors = "red" | "purple" | "green"
+// type MyColors = "red" | "purple" | "green"
 
-type AcceptedColors = Extract<Colors, MyColors> // Ce type, dans le cas présent compare les type Colors et My Colors
+// type AcceptedColors = Extract<Colors, MyColors> // Ce type, dans le cas présent compare les type Colors et My Colors
 
 
-const clgColors = (param1: AcceptedColors) => {
-  console.log(param1);
+// const clgColors = (param1: AcceptedColors) => {
+//   console.log(param1);
+// }
+
+// clgColors("blue") // "blue" n'est pas accepté car il n'existe pas dans les type Colors et MyColors
+
+
+// TYPE NONNULLABLE
+
+
+class Car {
+  color?: "Green" | "Black" | "blue" | "Red" | undefined;
+
+  paint(color: NonNullable<Car["color"]>) {
+    console.log(color);
+
+  }
 }
 
-clgColors("blue") // "blue" n'est pas accepté car il n'existe pas dans les type Colors et MyColors
+const ford = new Car()
+ford.paint("blue")
+
+
+const firstName: string = null
