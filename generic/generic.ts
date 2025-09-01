@@ -67,16 +67,82 @@
 
 // TYPE PARTIALS
 
-interface Todo {
-  title: string;
-  description: string;
+// interface Todo {
+//   title: string;
+//   description: string;
+// }
+
+// const addTodo = (title: string, description: string): Todo => {
+//   let myTodo: Todo = {title, description}
+//   return myTodo;
+
+// }
+
+// const todo = addTodo("Sport", 'Faire du foot');
+// console.log("Todo", todo);
+
+
+// UTILITY TYPE:  READONLY AVEC GENERIC
+
+// const myTodo: Readonly<Todo> = {
+//   title: "Sport",
+//   description: "faire du foot"
+// }
+
+// console.log(myTodo.title); // => Sport
+// myTodo.title = "Coding"
+
+
+// let colors = ["blue", "green","yellow"];
+// colors.push("orange")
+// console.log(colors);
+
+
+// let colors2: Readonly<string[]> = ["blue", "green","yellow"];
+// colors2.push("orange")
+// console.log(colors2);
+
+
+// UTILITY TYPE:  RECORD AVEC GENERIC
+
+
+// Je crée un interface
+
+interface Superheros {
+  name: string;
+  power: number;
+  marvel: boolean;
+  dcComics: boolean;
 }
 
-function addTodo(title: string, description: string): Todo {
-  let myTodo: Todo = {title, description}
-  return myTodo as Todo;
+type Name = "Batman" | "Spiderman" | "Superman";
 
+
+let heros: Record<Name, Superheros> = {
+  Batman: {
+    name: "Batman",
+    power: 60,
+    marvel: false,
+    dcComics: true
+  },
+
+  Spiderman: {
+    name: "Spiderman",
+    power: 60,
+    marvel: true,
+    dcComics: false
+  },
+
+  Superman: {
+    name: "Superman",
+    power: 100,
+    marvel: false,
+    dcComics: true
+  },
 }
 
-const todo = addTodo("Sport", 'Faire du foot');
-console.log(todo);
+console.log(heros);
+
+heros.Spiderman.marvel && console.log(`${heros.Spiderman.name} est Marvel`);
+
+
