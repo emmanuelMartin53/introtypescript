@@ -156,14 +156,29 @@
 // ford.paint("blue")
 // const firstName: string = null
 // TYPE PARAMETERS
+// const fetchUser = (id: number, username: string) => {
+//   console.log(`fetch user id ${id} | username ${username}`);
+// }
+// // fetchUser(1, "Emmannuel");
+// type FetchUserParams = Parameters<typeof fetchUser>; // [id: number, username: string]
+// const fetchLoggerUser = (...params: FetchUserParams) => {
+//   fetchUser(...params)
+// }
+// fetchLoggerUser(2, "Caco")
+// TYPE RETURNTYPE
 var fetchUser = function (id, username) {
-    console.log("fetch user id ".concat(id, " | username ").concat(username));
+    return {
+        id: id,
+        username: username,
+    };
 };
 var fetchLoggerUser = function () {
     var params = [];
     for (var _i = 0; _i < arguments.length; _i++) {
         params[_i] = arguments[_i];
     }
-    fetchUser.apply(void 0, params);
+    var memberData = fetchUser.apply(void 0, params);
+    console.log(memberData);
+    var user = memberData;
 };
 fetchLoggerUser(2, "Caco");

@@ -247,18 +247,44 @@
 
 // TYPE PARAMETERS
 
+// const fetchUser = (id: number, username: string) => {
+//   console.log(`fetch user id ${id} | username ${username}`);
+
+// }
+// // fetchUser(1, "Emmannuel");
+
+
+// type FetchUserParams = Parameters<typeof fetchUser>; // [id: number, username: string]
+
+
+// const fetchLoggerUser = (...params: FetchUserParams) => {
+//   fetchUser(...params)
+// }
+
+// fetchLoggerUser(2, "Caco")
+
+
+// TYPE RETURNTYPE
+
+
 const fetchUser = (id: number, username: string) => {
-  console.log(`fetch user id ${id} | username ${username}`);
-
+  return {
+    id,
+    username,
+  }
 }
-// fetchUser(1, "Emmannuel");
-
 
 type FetchUserParams = Parameters<typeof fetchUser>; // [id: number, username: string]
 
+type FetchUserReturn = ReturnType<typeof fetchUser> // retourne un object
 
 const fetchLoggerUser = (...params: FetchUserParams) => {
-  fetchUser(...params)
+  const memberData =  fetchUser(...params)
+  console.log(memberData);
+
+  let user: FetchUserReturn = memberData
+
 }
+
 
 fetchLoggerUser(2, "Caco")
