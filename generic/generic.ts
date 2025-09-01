@@ -230,17 +230,35 @@
 // TYPE NONNULLABLE
 
 
-class Car {
-  color?: "Green" | "Black" | "blue" | "Red" | undefined;
+// class Car {
+//   color?: "Green" | "Black" | "blue" | "Red" | undefined;
 
-  paint(color: NonNullable<Car["color"]>) {
-    console.log(color);
+//   paint(color: NonNullable<Car["color"]>) {
+//     console.log(color);
 
-  }
+//   }
+// }
+
+// const ford = new Car()
+// ford.paint("blue")
+
+
+// const firstName: string = null
+
+// TYPE PARAMETERS
+
+const fetchUser = (id: number, username: string) => {
+  console.log(`fetch user id ${id} | username ${username}`);
+
+}
+// fetchUser(1, "Emmannuel");
+
+
+type FetchUserParams = Parameters<typeof fetchUser>; // [id: number, username: string]
+
+
+const fetchLoggerUser = (...params: FetchUserParams) => {
+  fetchUser(...params)
 }
 
-const ford = new Car()
-ford.paint("blue")
-
-
-const firstName: string = null
+fetchLoggerUser(2, "Caco")

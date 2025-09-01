@@ -146,14 +146,24 @@
 // }
 // clgColors("blue") // "blue" n'est pas accepté car il n'existe pas dans les type Colors et MyColors
 // TYPE NONNULLABLE
-var Car = /** @class */ (function () {
-    function Car() {
+// class Car {
+//   color?: "Green" | "Black" | "blue" | "Red" | undefined;
+//   paint(color: NonNullable<Car["color"]>) {
+//     console.log(color);
+//   }
+// }
+// const ford = new Car()
+// ford.paint("blue")
+// const firstName: string = null
+// TYPE PARAMETERS
+var fetchUser = function (id, username) {
+    console.log("fetch user id ".concat(id, " | username ").concat(username));
+};
+var fetchLoggerUser = function () {
+    var params = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        params[_i] = arguments[_i];
     }
-    Car.prototype.paint = function (color) {
-        console.log(color);
-    };
-    return Car;
-}());
-var ford = new Car();
-ford.paint("blue");
-var firstName = null;
+    fetchUser.apply(void 0, params);
+};
+fetchLoggerUser(2, "Caco");
