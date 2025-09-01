@@ -34,21 +34,257 @@
 
 // MISSION: ENREGISTRER TYPE: STRING
 
-class Database {
-  data: Array<string | number> = [];
+// class Database<T extends string | number> {
+//   data: Array<T> = [];
 
-  saveData(value:string | number) {
-    this.data.push(value)
-  }
+//   saveData(value: T) {
+//     this.data.push(value)
+//   }
 
-  getAllDatas() {
-    return [...this.data]
+//   getAllDatas() {
+//     return [...this.data]
+//   }
+// }
+
+// const stringData = new Database<string>() // type database
+// stringData.saveData("Emmanuel");
+// stringData.saveData("Caco");
+// const result1 = stringData.getAllDatas();
+// console.log(result1);
+
+
+// const numberOrStringData = new Database<number | string>();
+// numberOrStringData.saveData(200);
+// const result2 = numberOrStringData.getAllDatas();
+// console.log(result2);
+
+
+// const objectData = new Database<object>();
+// objectData.saveData({name: "Aérys", game: "FFVII"});
+// const result3 = objectData.getAllDatas();
+// console.log(result3);
+
+
+// TYPE PARTIALS
+
+// interface Todo {
+//   title: string;
+//   description: string;
+// }
+
+// const addTodo = (title: string, description: string): Todo => {
+//   let myTodo: Todo = {title, description}
+//   return myTodo;
+
+// }
+
+// const todo = addTodo("Sport", 'Faire du foot');
+// console.log("Todo", todo);
+
+
+// UTILITY TYPE:  READONLY AVEC GENERIC
+
+// const myTodo: Readonly<Todo> = {
+//   title: "Sport",
+//   description: "faire du foot"
+// }
+
+// console.log(myTodo.title); // => Sport
+// myTodo.title = "Coding"
+
+
+// let colors = ["blue", "green","yellow"];
+// colors.push("orange")
+// console.log(colors);
+
+
+// let colors2: Readonly<string[]> = ["blue", "green","yellow"];
+// colors2.push("orange")
+// console.log(colors2);
+
+
+// UTILITY TYPE:  RECORD AVEC GENERIC
+
+
+// Je crée un interface
+
+// interface Superheros {
+//   name: string;
+//   power: number;
+//   marvel: boolean;
+//   dcComics: boolean;
+// }
+
+// type Name = "Batman" | "Spiderman" | "Superman";
+
+
+// let heros: Record<Name, Superheros> = {
+//   Batman: {
+//     name: "Batman",
+//     power: 60,
+//     marvel: false,
+//     dcComics: true
+//   },
+
+//   Spiderman: {
+//     name: "Spiderman",
+//     power: 60,
+//     marvel: true,
+//     dcComics: false
+//   },
+
+//   Superman: {
+//     name: "Superman",
+//     power: 100,
+//     marvel: false,
+//     dcComics: true
+//   },
+// }
+
+// console.log(heros);
+
+// heros.Spiderman.marvel && console.log(`${heros.Spiderman.name} est Marvel`);
+
+
+// TYPE PICK
+
+// je crée une interface
+
+// interface Todo {
+//   title: string;
+//   description : string;
+//   completed: boolean;
+// }
+
+// type TodoPreview = Pick<Todo, "title" | "completed">
+
+// let todo1: TodoPreview = {
+//   title: "Sport",
+//   // description: "Footing",
+//   completed: true
+// }
+
+// console.log(todo1);
+
+
+// TYPE OMIT
+
+// type TodoPreview1 = Omit<Todo, "title" | "completed">
+
+
+// let todo: TodoPreview1 = {
+//   description: "Regarder une vidéo sur le pastel sec",
+// }
+
+// console.log(todo);
+
+
+// TYPE EXCLUDE
+
+// type T0 = Exclude<"a" | "b" | "c" | (() => void), Function >;
+
+// type Easing = "ease-in" | "ease-out" | "ease-in-out"
+
+// type Animate = Exclude<Easing, "ease-out">
+
+// class UIElement {
+//   animate (x: number, y:number, easing: Animate) {
+//     if (easing === "ease-in") {
+//       console.log("ease-in");
+//     }
+
+//     // if (easing === "ease-out") {
+//     //   console.log("ease-out");
+//     // }
+
+//     if (easing === "ease-in-out") {
+//       console.log("ease-in-out");
+//     }
+
+//   }
+// }
+
+// let button = new UIElement()
+// button.animate(0, 0, "ease-in")
+// console.log(button);
+
+
+
+// TYPE EXTRACT
+
+// type Colors = "red" | "bule" | "orange" | "green"
+
+
+// type MyColors = "red" | "purple" | "green"
+
+// type AcceptedColors = Extract<Colors, MyColors> // Ce type, dans le cas présent compare les type Colors et My Colors
+
+
+// const clgColors = (param1: AcceptedColors) => {
+//   console.log(param1);
+// }
+
+// clgColors("blue") // "blue" n'est pas accepté car il n'existe pas dans les type Colors et MyColors
+
+
+// TYPE NONNULLABLE
+
+
+// class Car {
+//   color?: "Green" | "Black" | "blue" | "Red" | undefined;
+
+//   paint(color: NonNullable<Car["color"]>) {
+//     console.log(color);
+
+//   }
+// }
+
+// const ford = new Car()
+// ford.paint("blue")
+
+
+// const firstName: string = null
+
+// TYPE PARAMETERS
+
+// const fetchUser = (id: number, username: string) => {
+//   console.log(`fetch user id ${id} | username ${username}`);
+
+// }
+// // fetchUser(1, "Emmannuel");
+
+
+// type FetchUserParams = Parameters<typeof fetchUser>; // [id: number, username: string]
+
+
+// const fetchLoggerUser = (...params: FetchUserParams) => {
+//   fetchUser(...params)
+// }
+
+// fetchLoggerUser(2, "Caco")
+
+
+// TYPE RETURNTYPE
+
+
+const fetchUser = (id: number, username: string) => {
+  return {
+    id,
+    username,
   }
 }
 
-const stringData = new Database() // type database
-stringData.saveData("Emmanuel");
-stringData.saveData("Caco");
-stringData.saveData(200);
-const result = stringData.getAllDatas();
-console.log(result);
+type FetchUserParams = Parameters<typeof fetchUser>; // [id: number, username: string]
+
+type FetchUserReturn = ReturnType<typeof fetchUser> // retourne un object
+
+const fetchLoggerUser = (...params: FetchUserParams) => {
+  const memberData =  fetchUser(...params)
+  console.log(memberData);
+
+  let user: FetchUserReturn = memberData
+
+}
+
+
+fetchLoggerUser(2, "Caco")

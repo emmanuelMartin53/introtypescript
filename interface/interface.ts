@@ -24,7 +24,11 @@ interface Person1 {
   speak(arg: string): string; // type: string + return string
 }
 
+<<<<<<< HEAD
 let audrey: Person1;
+=======
+let audrey: Person;
+>>>>>>> 92711cd19b6dc130d271465e9b6f640a07a2e9ed
 
 audrey = {
   name: "Audrey",
@@ -43,7 +47,11 @@ const result = talkiingPerson(audrey,"je m'appelle")
 console.log(result);
 
 
+<<<<<<< HEAD
 let cyclope: Person1 = {
+=======
+let cyclope: Person = {
+>>>>>>> 92711cd19b6dc130d271465e9b6f640a07a2e9ed
   name: "Cyclope",
   eyes: 1,
   speak(param: string): string {
@@ -183,6 +191,7 @@ console.log(aerys);
 
 aerys.updateName("Tifa");
 aerys.walk()
+<<<<<<< HEAD
 
 
 interface User<T> {
@@ -200,3 +209,5 @@ const userData2: User<{name: string, role: string}> = {
   id: 43,
   data: {name:"Aérys", role: "admin"}
 }
+=======
+>>>>>>> 92711cd19b6dc130d271465e9b6f640a07a2e9ed
