@@ -1,3 +1,4 @@
+"use strict";
 var App;
 (function (App) {
     class Person {
@@ -10,4 +11,3 @@ var App;
     }
     App.Person = Person;
 })(App || (App = {}));
-export {};

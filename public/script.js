@@ -1,3 +1,4 @@
+"use strict";
 // je crée une variable
 // const palyndrome = (phrase: string):string => {
 //   phrase = phrase.toLowerCase().replace(/\s+/g, "")
@@ -12,4 +13,3 @@ var App;
     const person = new App.Person("Emmanuel", 43);
     console.log(person);
 })(App || (App = {}));
-export {};
