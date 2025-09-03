@@ -1,13 +1,13 @@
-const palindrome = (phrase) => {
+// Déterminer si un mot ou une phrase est un palyndrome
+const palyndrome = (phrase) => {
+    // je mets la "phrase" nminuscule
     phrase = phrase.toLowerCase().replace(/\s+/g, "");
+    // je sépare les lettres de la phrase et j'en inverse l'ordre puis je les rassemble
     let reversed = phrase.split("").reverse().join(""); // inverse et recolle
-    if (phrase === reversed) {
-        return `C'est un palindrome!`;
-    }
-    else {
-        return `Ce n'est pas un palindrome`;
-    }
+    // je compare la phrase d'origine avec la phrase inversée
+    return phrase === reversed ? `C'est un palyndrome` : `Ce n'est pas un palyndrome`;
 };
-const result = palindrome("engage le jeu que je le gagne");
+const result = palyndrome("engage le jeu que je le gagne");
 console.log(result.toUpperCase());
+console.log(result.toUpperCase().split("").reverse());
 export {};
