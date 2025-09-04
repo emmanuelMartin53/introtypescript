@@ -1,10 +1,10 @@
-namespace App {
-    interface PersonInterface {
-      name: string;
-      age: number;
-    }
 
-    export class Person implements PersonInterface {
+interface PersonInterface {
+  name: string;
+  age: number;
+}
+
+export class Person implements PersonInterface {
     name: string;
     age: number;
 
@@ -12,5 +12,4 @@ namespace App {
       this.name = name;
       this.age = age;
     }
-  }
 }

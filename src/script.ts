@@ -11,8 +11,6 @@
 // console.log(result);
 
 
-/// <reference path="PersonInterface.ts" />
-namespace App {
-  const person = new App.Person("Emmanuel", 43);
-  console.log(person);
-}
+import { Person } from "./PersonInterface.js";
+const person = new Person("Emmanuel", 43);
+console.log(person);
