@@ -1,3 +1,16 @@
+"use strict";
+var App;
+(function (App) {
+    class Person {
+        name;
+        age;
+        constructor(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+    }
+    App.Person = Person;
+})(App || (App = {}));
 // je crée une variable
 // const palyndrome = (phrase: string):string => {
 //   phrase = phrase.toLowerCase().replace(/\s+/g, "")
@@ -6,9 +19,10 @@
 // }
 // const result = palyndrome("radar");
 // console.log(result);
+/// <reference path="PersonInterface.ts" />
 var App;
 (function (App) {
-    const person = new Person("Emmanuel", 43);
+    const person = new App.Person("Emmanuel", 43);
     console.log(person);
 })(App || (App = {}));
-export {};
+console.log(App);
