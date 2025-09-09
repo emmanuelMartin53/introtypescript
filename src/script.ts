@@ -11,10 +11,13 @@
 // console.log(result);
 
 
-/// <reference path="PersonInterface.ts" />
-namespace App {
-  const person = new Person("Emmanuel", 43);
-  console.log(person);
-}
+// /// <reference path="PersonInterface.ts" />
+// namespace App {
+//   const person = new Person("Emmanuel", 43);
+//   console.log(person);
+// }
 
-console.log(App);
+// console.log(App);
+// import { Person } from "./PersonInterface.js";
+// const person = new Person("Emmanuel", 43);
+// console.log(person);
