@@ -132,4 +132,5 @@ person.getHairColor = function () {
     return "Hello";
 };
 console.log(person.getHairColor()); // hello
+``;
 export {};

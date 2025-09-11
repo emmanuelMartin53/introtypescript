@@ -161,3 +161,4 @@ person.getHairColor = function () {
 }
 
 console.log(person.getHairColor()); // hello
+``
