@@ -55,24 +55,81 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 //   method() {}
 // }
 // CLASS DECORATOR
-const PropertyLog = (target, propertyKey) => {
-    console.log(target);
-    console.log(propertyKey);
+// const PropertyLog = (target: any, propertyKey: string) => {
+// console.log(target);
+// console.log(propertyKey);
+// }
+// class Car {
+//   @PropertyLog
+//   brand: string;
+//   color: string;
+//   constructor (brand: string, color: string) {
+//     this.brand = brand,
+//     this.color = color
+//   }
+//   getInfos() {
+//     return `Marque: ${this.brand} | Color: ${this.color}`
+//   }
+// }
+// const citroen = new Car("DS3", "black")
+// console.log(citroen);
+// METHOD DECORATORS
+// const setterLog = (target: any, propertyKey: string, descriptor: PropertyDescriptor) => {
+//   console.log(target);            // Prototype de la class
+//   console.log(propertyKey);       // setColor
+//   console.log(descriptor);        // propriété du descriptor
+// }
+// const infosLog = (target: any, propertyKey: string, descriptor: PropertyDescriptor) => {
+//   console.log(target);            // Prototype de la class
+//   console.log(propertyKey);       // setColor
+//   console.log(descriptor);        // propriété du descriptor
+// }
+// class Car {
+//   brand: string;
+//   private color: string;
+//   constructor (brand: string, color: string) {
+//     this.brand = brand;
+//     this.color = color;
+//   }
+//   //@setterLog
+//   setColor(color: string) {
+//     this.color = color;
+//   }
+//   @infosLog
+//   infos() {
+//     return `Marque ${this.brand} | Couleur ${this.color}`;
+//   }
+// }
+// const peugeot = new Car("3008", "black")
+// console.log(peugeot.infos); // infos de Car
+// peugeot.infos = function() {
+//   return "Hello"
+// }
+// console.log(peugeot.infos());
+const readonly = (value) => {
+    return function (target, propertyKey, descriptor) {
+        // console.log(descriptor);        // writable
+        descriptor.writable = value;
+    };
 };
-class Car {
-    brand;
-    color;
-    constructor(brand, color) {
-        this.brand = brand,
-            this.color = color;
+class Person {
+    eyes;
+    hair;
+    constructor(eyes, hair) {
+        this.eyes = eyes;
+        this.hair = hair;
     }
-    getInfos() {
-        return `Marque: ${this.brand} | Color: ${this.color}`;
+    getHairColor() {
+        return this.hair;
     }
 }
 __decorate([
-    PropertyLog
-], Car.prototype, "brand", void 0);
-const citroen = new Car("DS3", "black");
-console.log(citroen);
+    readonly(true)
+], Person.prototype, "getHairColor", null);
+const person = new Person("marron", "chatain");
+console.log(person.getHairColor()); // chatain
+person.getHairColor = function () {
+    return "Hello";
+};
+console.log(person.getHairColor()); // hello
 export {};

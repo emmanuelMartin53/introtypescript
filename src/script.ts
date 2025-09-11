@@ -67,26 +67,97 @@
 
 // CLASS DECORATOR
 
-const PropertyLog = (target: any, propertyKey: string) => {
-console.log(target);
-console.log(propertyKey);
+// const PropertyLog = (target: any, propertyKey: string) => {
+// console.log(target);
+// console.log(propertyKey);
+// }
+
+// class Car {
+//   @PropertyLog
+//   brand: string;
+//   color: string;
+
+//   constructor (brand: string, color: string) {
+//     this.brand = brand,
+//     this.color = color
+//   }
+
+//   getInfos() {
+//     return `Marque: ${this.brand} | Color: ${this.color}`
+//   }
+// }
+
+
+// const citroen = new Car("DS3", "black")
+// console.log(citroen);
+
+
+// METHOD DECORATORS
+
+
+// const setterLog = (target: any, propertyKey: string, descriptor: PropertyDescriptor) => {
+//   console.log(target);            // Prototype de la class
+//   console.log(propertyKey);       // setColor
+//   console.log(descriptor);        // propriété du descriptor
+// }
+
+
+// const infosLog = (target: any, propertyKey: string, descriptor: PropertyDescriptor) => {
+//   console.log(target);            // Prototype de la class
+//   console.log(propertyKey);       // setColor
+//   console.log(descriptor);        // propriété du descriptor
+// }
+
+// class Car {
+//   brand: string;
+//   private color: string;
+
+//   constructor (brand: string, color: string) {
+//     this.brand = brand;
+//     this.color = color;
+//   }
+
+//   //@setterLog
+//   setColor(color: string) {
+//     this.color = color;
+//   }
+
+//   @infosLog
+//   infos() {
+//     return `Marque ${this.brand} | Couleur ${this.color}`;
+//   }
+// }
+
+// const peugeot = new Car("3008", "black")
+// console.log(peugeot.infos); // infos de Car
+
+// peugeot.infos = function() {
+//   return "Hello"
+// }
+// console.log(peugeot.infos());
+
+const readonly = (value: boolean) => {
+  return function(target: any, propertyKey: string, descriptor: PropertyDescriptor)  {
+  // console.log(descriptor);        // writable
+  descriptor.writable = value;
+  }
 }
 
-class Car {
-  @PropertyLog
-  brand: string;
-  color: string;
+class Person {
 
-  constructor (brand: string, color: string) {
-    this.brand = brand,
-    this.color = color
-  }
+  constructor( public eyes: string, private hair: string) {}
 
-  getInfos() {
-    return `Marque: ${this.brand} | Color: ${this.color}`
+  @readonly(true)
+  getHairColor() {
+    return this.hair;
   }
 }
 
+const person = new Person("marron", "chatain")
+console.log(person.getHairColor()); // chatain
 
-const citroen = new Car("DS3", "black")
-console.log(citroen);
+person.getHairColor = function () {
+  return "Hello";
+}
+
+console.log(person.getHairColor()); // hello
