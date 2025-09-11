@@ -1,16 +1,44 @@
-
-// je crée une variable
-
-// const palyndrome = (phrase: string):string => {
-//   phrase = phrase.toLowerCase().replace(/\s+/g, "")
-//   let reversed = phrase.split("").reverse().join("")
-//     return phrase === reversed ? `C'est un palyndrome` : `Ce n'est pas un palyndrome`
-// }
-
-// const result = palyndrome("radar");
-// console.log(result);
+// DECORATORS && DECORATORS
 
 
-import { Person } from "./PersonInterface.js";
-const person = new Person("Emmanuel", 43);
-console.log(person);
+
+// 1 Injecter un élément dans un div
+const Test = (template: string, id: string) => {
+  return function (constructor: Function) {
+    const title = document.getElementById(id)!;
+    const h1 = document.createElement("h1");
+    h1.innerHTML = template;
+    title.appendChild(h1);
+  }
+}
+
+// @Test("Hello world","title")
+
+// Injecter un constructor
+
+
+const Component = (id: string) => {
+  return function (target: any) {
+    const title = document.getElementById(id)!;
+    const h1 = document.createElement("h1");
+
+    const objCar = new target("DS3", "black")
+    h1.innerText = objCar.carDetails()
+    title.appendChild(h1)
+  }
+}
+
+@Component("title")
+
+class Car {
+  constructor (private name: string, private color: string) {}
+  carDetails() {
+    return `Marque: ${this.name} | Couleur: ${this.color}`
+  }
+}
+
+//  const citroen = new Car("DS3", "noir");
+//  console.log(citroen.carDetails());
+
+
+// DECORATORS FACTORIES

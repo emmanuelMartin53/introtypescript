@@ -2,6 +2,7 @@
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./public",
+    "experimentalDecorators": true,
     // "outFile": "./public/bundle.js",                  /* Concatenate and emit output to single file */
 
     "module": "esnext",     // 👈 si tu fais du navigateur
@@ -36,14 +37,15 @@
 
     "strict": true,                                   /* Enable all strict type-checking options.  */
     "jsx": "react-jsx",
-    // "verbatimModuleSyntax": true,
-    // "isolatedModules": true,
-    // "noUncheckedSideEffectImports": true,
-    // "moduleDetection": "force",
-    // "skipLibCheck": true
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force",
+    "skipLibCheck": true
   },
   "include": [
     "./src"
   ]
+
 
 }
