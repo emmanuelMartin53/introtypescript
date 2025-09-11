@@ -1,7 +1,5 @@
 // DECORATORS && DECORATORS
 
-
-
 // 1 Injecter un élément dans un div
 const Test = (template: string, id: string) => {
   return function (constructor: Function) {
@@ -14,11 +12,13 @@ const Test = (template: string, id: string) => {
 
 // @Test("Hello world","title")
 
-// Injecter un constructor
+// 2 Injecter un constructor
 
 
 const Component = (id: string) => {
+  console.log("Component");
   return function (target: any) {
+    console.log("Return function");
     const title = document.getElementById(id)!;
     const h1 = document.createElement("h1");
 
@@ -41,4 +41,27 @@ class Car {
 //  console.log(citroen.carDetails());
 
 
-// DECORATORS FACTORIES
+// MULTIPLE DECORATORS FACTORIES
+
+
+
+
+function first() {
+  console.log("first(): factory evaluated"); // en console => 1 (s'affiche en premier)
+  return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+    console.log("first(): called"); // en console => 4 (s'affiche en dernier)
+  };
+}
+
+function second() {
+  console.log("second(): factory evaluated"); // en console => 2 (s'affiche en second)
+  return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+    console.log("second(): called"); // en console => 3 (s'affiche en troisieme)
+  };
+}
+
+class ExampleClass {
+  @first()
+  @second()
+  method() {}
+}

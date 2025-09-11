@@ -15,9 +15,11 @@ const Test = (template, id) => {
     };
 };
 // @Test("Hello world","title")
-// Injecter un constructor
+// 2 Injecter un constructor
 const Component = (id) => {
+    console.log("Component");
     return function (target) {
+        console.log("Return function");
         const title = document.getElementById(id);
         const h1 = document.createElement("h1");
         const objCar = new target("DS3", "black");
@@ -39,7 +41,26 @@ let Car = class Car {
 Car = __decorate([
     Component("title")
 ], Car);
-export {};
 //  const citroen = new Car("DS3", "noir");
 //  console.log(citroen.carDetails());
-// DECORATORS FACTORIES
+// MULTIPLE DECORATORS FACTORIES
+function first() {
+    console.log("first(): factory evaluated"); // en console => 1 (s'affiche en premier)
+    return function (target, propertyKey, descriptor) {
+        console.log("first(): called"); // en console => 4 (s'affiche en dernier)
+    };
+}
+function second() {
+    console.log("second(): factory evaluated"); // en console => 2 (s'affiche en second)
+    return function (target, propertyKey, descriptor) {
+        console.log("second(): called"); // en console => 3 (s'affiche en troisieme)
+    };
+}
+class ExampleClass {
+    method() { }
+}
+__decorate([
+    first(),
+    second()
+], ExampleClass.prototype, "method", null);
+export {};
