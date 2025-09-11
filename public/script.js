@@ -5,6 +5,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 // 1 Injecter un élément dans un div
 // const Test = (template: string, id: string) => {
 //   return function (constructor: Function) {
@@ -112,25 +115,41 @@ const readonly = (value) => {
         descriptor.writable = value;
     };
 };
+const logparam = (target, name, position) => {
+    console.log(target); // prototype
+    console.log(name); // Nom de la méthode loginMsg
+    console.log(position); // position du paramètre sur lequel agit le décorator
+};
 class Person {
+    age;
     eyes;
     hair;
-    constructor(eyes, hair) {
+    constructor(age, eyes, hair) {
+        this.age = age;
         this.eyes = eyes;
         this.hair = hair;
     }
     getHairColor() {
         return this.hair;
     }
+    loginMsg(minAge, textOne, textTwo) {
+        if (this.age > 17) {
+            return textOne;
+        }
+        return textTwo;
+    }
 }
 __decorate([
     readonly(true)
 ], Person.prototype, "getHairColor", null);
-const person = new Person("marron", "chatain");
+__decorate([
+    __param(0, logparam)
+], Person.prototype, "loginMsg", null);
+const person = new Person(30, "marron", "chatain");
 console.log(person.getHairColor()); // chatain
 person.getHairColor = function () {
     return "Hello";
 };
-console.log(person.getHairColor()); // hello
-``;
+console.log(person); // hello
+console.log(person.loginMsg(17, "Inscription autorisé", "Inscription refusée"));
 export {};

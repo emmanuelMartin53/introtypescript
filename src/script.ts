@@ -143,22 +143,37 @@ const readonly = (value: boolean) => {
   }
 }
 
+const logparam = (target: any, name: string, position: number) => {
+  console.log(target);                  // prototype
+  console.log(name);                    // Nom de la méthode loginMsg
+  console.log(position);                // position du paramètre sur lequel agit le décorator
+}
+
 class Person {
 
-  constructor( public eyes: string, private hair: string) {}
+  constructor( public age: number, public eyes: string, private hair: string) {}
 
   @readonly(true)
   getHairColor() {
     return this.hair;
   }
+
+  loginMsg(@logparam minAge: number, textOne: string, textTwo: string) {
+
+    if (this.age > 17) {
+      return textOne
+    }
+    return textTwo;
+  }
+
 }
 
-const person = new Person("marron", "chatain")
+const person = new Person( 30,"marron", "chatain")
 console.log(person.getHairColor()); // chatain
 
 person.getHairColor = function () {
   return "Hello";
 }
 
-console.log(person.getHairColor()); // hello
-``
+console.log(person); // hello
+console.log(person.loginMsg(17, "Inscription autorisé", "Inscription refusée"));
