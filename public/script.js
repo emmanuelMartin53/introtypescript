@@ -6,61 +6,73 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 // 1 Injecter un élément dans un div
-const Test = (template, id) => {
-    return function (constructor) {
-        const title = document.getElementById(id);
-        const h1 = document.createElement("h1");
-        h1.innerHTML = template;
-        title.appendChild(h1);
-    };
-};
+// const Test = (template: string, id: string) => {
+//   return function (constructor: Function) {
+//     const title = document.getElementById(id)!;
+//     const h1 = document.createElement("h1");
+//     h1.innerHTML = template;
+//     title.appendChild(h1);
+//   }
+// }
 // @Test("Hello world","title")
 // 2 Injecter un constructor
-const Component = (id) => {
-    console.log("Component");
-    return function (target) {
-        console.log("Return function");
-        const title = document.getElementById(id);
-        const h1 = document.createElement("h1");
-        const objCar = new target("DS3", "black");
-        h1.innerText = objCar.carDetails();
-        title.appendChild(h1);
-    };
-};
-let Car = class Car {
-    name;
-    color;
-    constructor(name, color) {
-        this.name = name;
-        this.color = color;
-    }
-    carDetails() {
-        return `Marque: ${this.name} | Couleur: ${this.color}`;
-    }
-};
-Car = __decorate([
-    Component("title")
-], Car);
+// const Component = (id: string) => {
+//   console.log("Component");
+//   return function (target: any) {
+//     console.log("Return function");
+//     const title = document.getElementById(id)!;
+//     const h1 = document.createElement("h1");
+//     const objCar = new target("DS3", "black")
+//     h1.innerText = objCar.carDetails()
+//     title.appendChild(h1)
+//   }
+// }
+// @Component("title")
+// class Car {
+//   constructor (private name: string, private color: string) {}
+//   carDetails() {
+//     return `Marque: ${this.name} | Couleur: ${this.color}`
+//   }
+// }
 //  const citroen = new Car("DS3", "noir");
 //  console.log(citroen.carDetails());
 // MULTIPLE DECORATORS FACTORIES
-function first() {
-    console.log("first(): factory evaluated"); // en console => 1 (s'affiche en premier)
-    return function (target, propertyKey, descriptor) {
-        console.log("first(): called"); // en console => 4 (s'affiche en dernier)
-    };
-}
-function second() {
-    console.log("second(): factory evaluated"); // en console => 2 (s'affiche en second)
-    return function (target, propertyKey, descriptor) {
-        console.log("second(): called"); // en console => 3 (s'affiche en troisieme)
-    };
-}
-class ExampleClass {
-    method() { }
+// function first() {
+//   console.log("first(): factory evaluated"); // en console => 1 (s'affiche en premier)
+//   return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+//     console.log("first(): called"); // en console => 4 (s'affiche en dernier)
+//   };
+// }
+// function second() {
+//   console.log("second(): factory evaluated"); // en console => 2 (s'affiche en second)
+//   return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+//     console.log("second(): called"); // en console => 3 (s'affiche en troisieme)
+//   };
+// }
+// class ExampleClass {
+//   @first()
+//   @second()
+//   method() {}
+// }
+// CLASS DECORATOR
+const PropertyLog = (target, propertyKey) => {
+    console.log(target);
+    console.log(propertyKey);
+};
+class Car {
+    brand;
+    color;
+    constructor(brand, color) {
+        this.brand = brand,
+            this.color = color;
+    }
+    getInfos() {
+        return `Marque: ${this.brand} | Color: ${this.color}`;
+    }
 }
 __decorate([
-    first(),
-    second()
-], ExampleClass.prototype, "method", null);
+    PropertyLog
+], Car.prototype, "brand", void 0);
+const citroen = new Car("DS3", "black");
+console.log(citroen);
 export {};
