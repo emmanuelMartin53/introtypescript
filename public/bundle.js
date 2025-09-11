@@ -1,6 +1,8 @@
 "use strict";
-var App;
-(function (App) {
+define("PersonInterface", ["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.Person = void 0;
     class Person {
         name;
         age;
@@ -9,8 +11,8 @@ var App;
             this.age = age;
         }
     }
-    App.Person = Person;
-})(App || (App = {}));
+    exports.Person = Person;
+});
 // je crée une variable
 // const palyndrome = (phrase: string):string => {
 //   phrase = phrase.toLowerCase().replace(/\s+/g, "")
@@ -19,10 +21,15 @@ var App;
 // }
 // const result = palyndrome("radar");
 // console.log(result);
-/// <reference path="PersonInterface.ts" />
-var App;
-(function (App) {
-    const person = new App.Person("Emmanuel", 43);
-    console.log(person);
-})(App || (App = {}));
-console.log(App);
+// /// <reference path="PersonInterface.ts" />
+// namespace App {
+//   const person = new Person("Emmanuel", 43);
+//   console.log(person);
+// }
+// console.log(App);
+// import { Person } from "./PersonInterface.js";
+// const person = new Person("Emmanuel", 43);
+// console.log(person);
+const Test = (constructor) => {
+    console.log(constructor);
+};

@@ -21,3 +21,27 @@
 // import { Person } from "./PersonInterface.js";
 // const person = new Person("Emmanuel", 43);
 // console.log(person);
+
+
+const Test = (hw: string) => {
+  return function(constructor: Function) {
+    console.log(constructor);
+    console.log(hw);
+  }
+}
+
+@Test("Hello world!")
+
+
+class Car {
+
+  constructor(private name: string, private color: string) {}
+
+  carDetails() {
+    return `Marque: ${this.name} | color: ${this.color}`
+  }
+
+}
+
+const citroen = new Car("DS3", "black")
+console.log(citroen.carDetails());

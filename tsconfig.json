@@ -2,7 +2,8 @@
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./public",
-    "outFile": "./public/bundle.js",                  /* Concatenate and emit output to single file */
+    "experimentalDecorators": true,
+    // "outFile": "./public/bundle.js",                  /* Concatenate and emit output to single file */
 
     "module": "amd",     // 👈 si tu fais du navigateur
     "target": "esnext",
