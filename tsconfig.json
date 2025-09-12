@@ -3,6 +3,7 @@
     "rootDir": "./src",
     "outDir": "./public",
     "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
     // "outFile": "./public/bundle.js",                  /* Concatenate and emit output to single file */
 
     "module": "esnext",     // 👈 si tu fais du navigateur

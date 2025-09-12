@@ -5,9 +5,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 // 1 Injecter un élément dans un div
 // const Test = (template: string, id: string) => {
 //   return function (constructor: Function) {
@@ -109,34 +106,68 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 //   return "Hello"
 // }
 // console.log(peugeot.infos());
-const readonly = (value) => {
-    return function (target, propertyKey, descriptor) {
-        // console.log(descriptor);        // writable
-        descriptor.writable = value;
+// const readonly = (value: boolean) => {
+//   return function(target: any, propertyKey: string, descriptor: PropertyDescriptor)  {
+//   // console.log(descriptor);        // writable
+//   descriptor.writable = value;
+//   }
+// }
+// const methodLog = (target: any, name: string, descriptor: PropertyDescriptor) => {
+//   console.log("Je suis dans le decorator de la méthode"); // le console.log s'affichera en second
+//   // console.log(name);
+//   // console.log(descriptor);
+// }
+// const logparam = (target: any, name: string, position: number) => {
+//   console.log("Je suis dans le décorator du paramètre"); // le console.log s'affichera en premier
+//   // console.log(target);                  // prototype
+//   // console.log(name);                    // Nom de la méthode loginMsg
+//   // console.log(position);                // position du paramètre sur lequel agit le décorator
+// }
+// class Person {
+//   constructor( public age: number, public eyes: string, private hair: string) {}
+//   @readonly(true)
+//   getHairColor() {
+//     return this.hair;
+//   }
+//   @methodLog
+//   loginMsg(@logparam minAge: number, textOne: string, textTwo: string) {
+//     if (this.age > 17) {
+//       return textOne
+//     }
+//     return textTwo;
+//   }
+// }
+// const person = new Person( 18,"marron", "chatain")
+// console.log(person.getHairColor()); // chatain
+// person.getHairColor = function () {
+//   return "Hello";
+// }
+// console.log(person); // hello
+// console.log(person.loginMsg(17, "Inscription autorisée", "Inscription refusée"));
+// REECRITURE FONCTION CONSTRUCTOR GRACE A LA CLASSE DECORATOR
+const changeArtist = (artist) => {
+    return function (constructor) {
+        return class {
+            age;
+            eyes;
+            artist = artist;
+            loginMsg() {
+                return "Hello World";
+            }
+        };
     };
 };
-const methodLog = (target, name, descriptor) => {
-    console.log("Je suis dans le decorator de la méthode"); // le console.log s'affichera en second
-    // console.log(name);
-    // console.log(descriptor);
-};
-const logparam = (target, name, position) => {
-    console.log("Je suis dans le décorator du paramètre"); // le console.log s'affichera en premier
-    // console.log(target);                  // prototype
-    // console.log(name);                    // Nom de la méthode loginMsg
-    // console.log(position);                // position du paramètre sur lequel agit le décorator
-};
-class Person {
+// const methodLog = (target: any, name: string, descriptor: PropertyDescriptor) => {
+//   // console.log("je suis dans le decorator de la méthode")
+// }
+let Person = class Person {
     age;
     eyes;
-    hair;
-    constructor(age, eyes, hair) {
+    artist;
+    constructor(age, eyes, artist) {
         this.age = age;
         this.eyes = eyes;
-        this.hair = hair;
-    }
-    getHairColor() {
-        return this.hair;
+        this.artist = artist;
     }
     loginMsg(minAge, textOne, textTwo) {
         if (this.age > 17) {
@@ -144,19 +175,10 @@ class Person {
         }
         return textTwo;
     }
-}
-__decorate([
-    readonly(true)
-], Person.prototype, "getHairColor", null);
-__decorate([
-    methodLog,
-    __param(0, logparam)
-], Person.prototype, "loginMsg", null);
-const person = new Person(18, "marron", "chatain");
-console.log(person.getHairColor()); // chatain
-person.getHairColor = function () {
-    return "Hello";
 };
-console.log(person); // hello
-console.log(person.loginMsg(17, "Inscription autorisée", "Inscription refusée"));
+Person = __decorate([
+    changeArtist("Hans Zimmer")
+], Person);
+const person = new Person(17, "marron", "Bono");
+console.log(`${person.loginMsg(18, "OK", "refusée")}`);
 export {};
