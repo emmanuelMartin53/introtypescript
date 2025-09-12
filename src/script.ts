@@ -143,10 +143,18 @@ const readonly = (value: boolean) => {
   }
 }
 
+
+const methodLog = (target: any, name: string, descriptor: PropertyDescriptor) => {
+  console.log("Je suis dans le decorator de la méthode"); // le console.log s'affichera en second
+  // console.log(name);
+  // console.log(descriptor);
+}
+
 const logparam = (target: any, name: string, position: number) => {
-  console.log(target);                  // prototype
-  console.log(name);                    // Nom de la méthode loginMsg
-  console.log(position);                // position du paramètre sur lequel agit le décorator
+  console.log("Je suis dans le décorator du paramètre"); // le console.log s'affichera en premier
+  // console.log(target);                  // prototype
+  // console.log(name);                    // Nom de la méthode loginMsg
+  // console.log(position);                // position du paramètre sur lequel agit le décorator
 }
 
 class Person {
@@ -158,6 +166,7 @@ class Person {
     return this.hair;
   }
 
+  @methodLog
   loginMsg(@logparam minAge: number, textOne: string, textTwo: string) {
 
     if (this.age > 17) {
@@ -168,7 +177,7 @@ class Person {
 
 }
 
-const person = new Person( 30,"marron", "chatain")
+const person = new Person( 18,"marron", "chatain")
 console.log(person.getHairColor()); // chatain
 
 person.getHairColor = function () {
@@ -176,4 +185,4 @@ person.getHairColor = function () {
 }
 
 console.log(person); // hello
-console.log(person.loginMsg(17, "Inscription autorisé", "Inscription refusée"));
+console.log(person.loginMsg(17, "Inscription autorisée", "Inscription refusée"));

@@ -115,10 +115,16 @@ const readonly = (value) => {
         descriptor.writable = value;
     };
 };
+const methodLog = (target, name, descriptor) => {
+    console.log("Je suis dans le decorator de la méthode"); // le console.log s'affichera en second
+    // console.log(name);
+    // console.log(descriptor);
+};
 const logparam = (target, name, position) => {
-    console.log(target); // prototype
-    console.log(name); // Nom de la méthode loginMsg
-    console.log(position); // position du paramètre sur lequel agit le décorator
+    console.log("Je suis dans le décorator du paramètre"); // le console.log s'affichera en premier
+    // console.log(target);                  // prototype
+    // console.log(name);                    // Nom de la méthode loginMsg
+    // console.log(position);                // position du paramètre sur lequel agit le décorator
 };
 class Person {
     age;
@@ -143,13 +149,14 @@ __decorate([
     readonly(true)
 ], Person.prototype, "getHairColor", null);
 __decorate([
+    methodLog,
     __param(0, logparam)
 ], Person.prototype, "loginMsg", null);
-const person = new Person(30, "marron", "chatain");
+const person = new Person(18, "marron", "chatain");
 console.log(person.getHairColor()); // chatain
 person.getHairColor = function () {
     return "Hello";
 };
 console.log(person); // hello
-console.log(person.loginMsg(17, "Inscription autorisé", "Inscription refusée"));
+console.log(person.loginMsg(17, "Inscription autorisée", "Inscription refusée"));
 export {};
