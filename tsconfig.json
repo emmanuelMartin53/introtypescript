@@ -5,7 +5,7 @@
     "experimentalDecorators": true,
     // "outFile": "./public/bundle.js",                  /* Concatenate and emit output to single file */
 
-    "module": "amd",     // 👈 si tu fais du navigateur
+    "module": "esnext",     // 👈 si tu fais du navigateur
     "target": "esnext",
     "types": [],
     // "lib": [
@@ -37,14 +37,15 @@
 
     "strict": true,                                   /* Enable all strict type-checking options.  */
     "jsx": "react-jsx",
-    // "verbatimModuleSyntax": true,
-    // "isolatedModules": true,
-    // "noUncheckedSideEffectImports": true,
-    // "moduleDetection": "force",
-    // "skipLibCheck": true
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force",
+    "skipLibCheck": true
   },
   "include": [
     "./src"
   ]
+
 
 }

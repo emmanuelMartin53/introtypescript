@@ -1,46 +1,154 @@
-"use strict";
-// je crée une variable
+// DECORATORS && DECORATORS
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-// const palyndrome = (phrase: string):string => {
-//   phrase = phrase.toLowerCase().replace(/\s+/g, "")
-//   let reversed = phrase.split("").reverse().join("")
-//     return phrase === reversed ? `C'est un palyndrome` : `Ce n'est pas un palyndrome`
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+// 1 Injecter un élément dans un div
+// const Test = (template: string, id: string) => {
+//   return function (constructor: Function) {
+//     const title = document.getElementById(id)!;
+//     const h1 = document.createElement("h1");
+//     h1.innerHTML = template;
+//     title.appendChild(h1);
+//   }
 // }
-// const result = palyndrome("radar");
-// console.log(result);
-// /// <reference path="PersonInterface.ts" />
-// namespace App {
-//   const person = new Person("Emmanuel", 43);
-//   console.log(person);
+// @Test("Hello world","title")
+// 2 Injecter un constructor
+// const Component = (id: string) => {
+//   console.log("Component");
+//   return function (target: any) {
+//     console.log("Return function");
+//     const title = document.getElementById(id)!;
+//     const h1 = document.createElement("h1");
+//     const objCar = new target("DS3", "black")
+//     h1.innerText = objCar.carDetails()
+//     title.appendChild(h1)
+//   }
 // }
-// console.log(App);
-// import { Person } from "./PersonInterface.js";
-// const person = new Person("Emmanuel", 43);
-// console.log(person);
-const Test = (hw) => {
-    return function (constructor) {
-        console.log(constructor);
-        console.log(hw);
+// @Component("title")
+// class Car {
+//   constructor (private name: string, private color: string) {}
+//   carDetails() {
+//     return `Marque: ${this.name} | Couleur: ${this.color}`
+//   }
+// }
+//  const citroen = new Car("DS3", "noir");
+//  console.log(citroen.carDetails());
+// MULTIPLE DECORATORS FACTORIES
+// function first() {
+//   console.log("first(): factory evaluated"); // en console => 1 (s'affiche en premier)
+//   return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+//     console.log("first(): called"); // en console => 4 (s'affiche en dernier)
+//   };
+// }
+// function second() {
+//   console.log("second(): factory evaluated"); // en console => 2 (s'affiche en second)
+//   return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+//     console.log("second(): called"); // en console => 3 (s'affiche en troisieme)
+//   };
+// }
+// class ExampleClass {
+//   @first()
+//   @second()
+//   method() {}
+// }
+// CLASS DECORATOR
+// const PropertyLog = (target: any, propertyKey: string) => {
+// console.log(target);
+// console.log(propertyKey);
+// }
+// class Car {
+//   @PropertyLog
+//   brand: string;
+//   color: string;
+//   constructor (brand: string, color: string) {
+//     this.brand = brand,
+//     this.color = color
+//   }
+//   getInfos() {
+//     return `Marque: ${this.brand} | Color: ${this.color}`
+//   }
+// }
+// const citroen = new Car("DS3", "black")
+// console.log(citroen);
+// METHOD DECORATORS
+// const setterLog = (target: any, propertyKey: string, descriptor: PropertyDescriptor) => {
+//   console.log(target);            // Prototype de la class
+//   console.log(propertyKey);       // setColor
+//   console.log(descriptor);        // propriété du descriptor
+// }
+// const infosLog = (target: any, propertyKey: string, descriptor: PropertyDescriptor) => {
+//   console.log(target);            // Prototype de la class
+//   console.log(propertyKey);       // setColor
+//   console.log(descriptor);        // propriété du descriptor
+// }
+// class Car {
+//   brand: string;
+//   private color: string;
+//   constructor (brand: string, color: string) {
+//     this.brand = brand;
+//     this.color = color;
+//   }
+//   //@setterLog
+//   setColor(color: string) {
+//     this.color = color;
+//   }
+//   @infosLog
+//   infos() {
+//     return `Marque ${this.brand} | Couleur ${this.color}`;
+//   }
+// }
+// const peugeot = new Car("3008", "black")
+// console.log(peugeot.infos); // infos de Car
+// peugeot.infos = function() {
+//   return "Hello"
+// }
+// console.log(peugeot.infos());
+function readonly(value) {
+    return function (target, propertyKey, descriptor) {
+        console.log(target);
+        console.log(propertyKey);
+        console.log(descriptor); // writable
+        descriptor.writable = value;
     };
-};
-let Car = class Car {
-    name;
-    color;
-    constructor(name, color) {
-        this.name = name;
-        this.color = color;
+}
+function logparm(target, name, position) {
+    console.log(target); // prototype
+    console.log(name); // nom de la méthode loginMsg
+    console.log(position); // position du parametre sur lequel agit le décorator 0
+}
+class Person {
+    age;
+    eyes;
+    hair;
+    constructor(age, eyes, hair) {
+        this.age = age;
+        this.eyes = eyes;
+        this.hair = hair;
     }
-    carDetails() {
-        return `Marque: ${this.name} | color: ${this.color}`;
+    getHairColor() {
+        return this.hair;
     }
-};
-Car = __decorate([
-    Test("Hello world!")
-], Car);
-const citroen = new Car("DS3", "black");
-console.log(citroen.carDetails());
+    loginMsg(minAge, textOne, textTwo) {
+        if (this.age > 17) {
+            return textOne;
+        }
+        return textTwo;
+    }
+}
+__decorate([
+    readonly(false)
+], Person.prototype, "getHairColor", null);
+__decorate([
+    __param(0, logparm)
+], Person.prototype, "loginMsg", null);
+const person = new Person(17, "marron", "chatain");
+console.log(person.getHairColor()); // chatain
+console.log(person.loginMsg(17, "inscription autorisé", "inscription refusé"));
+export {};
+// DECORATORS SUR LES PARAMETRES
