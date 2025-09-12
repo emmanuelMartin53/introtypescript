@@ -136,44 +136,95 @@
 // }
 // console.log(peugeot.infos());
 
-function readonly (value: boolean) {
-  return function(target: any, propertyKey: string, descriptor: PropertyDescriptor)  {
-  console.log(target);
-  console.log(propertyKey);
-  console.log(descriptor);        // writable
-  descriptor.writable = value;
-  }
-}
+// const readonly = (value: boolean) => {
+//   return function(target: any, propertyKey: string, descriptor: PropertyDescriptor)  {
+//   // console.log(descriptor);        // writable
+//   descriptor.writable = value;
+//   }
+// }
 
-function logparm(target: any, name: string, position: number) {
-    console.log(target);          // prototype
-    console.log(name);            // nom de la méthode loginMsg
-    console.log(position);        // position du parametre sur lequel agit le décorator 0
-}
 
-class Person {
+// const methodLog = (target: any, name: string, descriptor: PropertyDescriptor) => {
+//   console.log("Je suis dans le decorator de la méthode"); // le console.log s'affichera en second
+//   // console.log(name);
+//   // console.log(descriptor);
+// }
 
-  constructor(public age: number, public eyes: string, private hair: string) {}
+// const logparam = (target: any, name: string, position: number) => {
+//   console.log("Je suis dans le décorator du paramètre"); // le console.log s'affichera en premier
+//   // console.log(target);                  // prototype
+//   // console.log(name);                    // Nom de la méthode loginMsg
+//   // console.log(position);                // position du paramètre sur lequel agit le décorator
+// }
 
-  @readonly(false)
-  getHairColor() {
-    return this.hair;
-  }
+// class Person {
 
-  loginMsg(@logparm minAge: number, textOne: string, textTwo: string) {
-    if (this.age > 17) {
-      return textOne;
+//   constructor( public age: number, public eyes: string, private hair: string) {}
+
+//   @readonly(true)
+//   getHairColor() {
+//     return this.hair;
+//   }
+
+//   @methodLog
+//   loginMsg(@logparam minAge: number, textOne: string, textTwo: string) {
+
+//     if (this.age > 17) {
+//       return textOne
+//     }
+//     return textTwo;
+//   }
+
+// }
+
+// const person = new Person( 18,"marron", "chatain")
+// console.log(person.getHairColor()); // chatain
+
+// person.getHairColor = function () {
+//   return "Hello";
+// }
+
+// console.log(person); // hello
+// console.log(person.loginMsg(17, "Inscription autorisée", "Inscription refusée"));
+
+
+// REECRITURE FONCTION CONSTRUCTOR GRACE A LA CLASSE DECORATOR
+
+
+const changeArtist = (artist: string) => {
+  return function (constructor: any) {
+    return class {
+      public age: number;
+      public eyes: string;
+      public artist: string = artist;
+      loginMsg() {
+        return "Hello World"
+      }
     }
-    return textTwo;
-
-  } 
+  }
 }
 
-const person = new Person(17,"marron", "chatain")
-console.log(person.getHairColor()); // chatain
-console.log(person.loginMsg(17, "inscription autorisé", "inscription refusé"));
+
+// const methodLog = (target: any, name: string, descriptor: PropertyDescriptor) => {
+//   // console.log("je suis dans le decorator de la méthode")
+// }
 
 
 
+@changeArtist("Hans Zimmer")
+class Person {
+  constructor(public age: number, public eyes: string, public artist: string) {}
 
-// DECORATORS SUR LES PARAMETRES
+
+    loginMsg(minAge: number, textOne: string, textTwo:string) {
+      if (this.age > 17) {
+        return textOne
+      }
+      return textTwo
+    }
+
+}
+
+
+const person = new Person( 17,"marron", "Bono")
+console.log(`${person.loginMsg(18, "OK", "refusée")}`);
