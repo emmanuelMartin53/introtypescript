@@ -145,18 +145,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 // console.log(person); // hello
 // console.log(person.loginMsg(17, "Inscription autorisée", "Inscription refusée"));
 // REECRITURE FONCTION CONSTRUCTOR GRACE A LA CLASSE DECORATOR
-const changeArtist = (artist) => {
-    return function (constructor) {
-        return class {
-            age;
-            eyes;
-            artist = artist;
-            loginMsg() {
-                return "Hello World";
-            }
-        };
+// const changeArtist = (artist: string, id: string) => {
+//   return function<T extends { new (...args: any[]): {age: number} }>(constructor: T) {
+//     return class extends constructor {
+//       constructor (...args: any[]) {
+//         super();
+//         const el = document.getElementById(id) as HTMLDivElement;
+//         const h1 = document.createElement("h1");
+//         h1.innerText = artist;
+//         el.append(h1);
+//         this.age = 20;
+//       }
+//     }
+//   }
+// }
+function changeArtist(constructor) {
+    return class extends constructor {
+        newProperty = "Toto";
     };
-};
+}
 // const methodLog = (target: any, name: string, descriptor: PropertyDescriptor) => {
 //   // console.log("je suis dans le decorator de la méthode")
 // }
@@ -177,8 +184,9 @@ let Person = class Person {
     }
 };
 Person = __decorate([
-    changeArtist("Hans Zimmer")
+    changeArtist
 ], Person);
 const person = new Person(17, "marron", "Bono");
-console.log(`${person.loginMsg(18, "OK", "refusée")}`);
+// console.log(`${person.loginMsg(18, "OK", "refusée")}`);
+console.log(person);
 export {};
