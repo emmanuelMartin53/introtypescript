@@ -1,192 +1,22 @@
 // DECORATORS && DECORATORS
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-// 1 Injecter un élément dans un div
-// const Test = (template: string, id: string) => {
-//   return function (constructor: Function) {
-//     const title = document.getElementById(id)!;
-//     const h1 = document.createElement("h1");
-//     h1.innerHTML = template;
-//     title.appendChild(h1);
-//   }
-// }
-// @Test("Hello world","title")
-// 2 Injecter un constructor
-// const Component = (id: string) => {
-//   console.log("Component");
-//   return function (target: any) {
-//     console.log("Return function");
-//     const title = document.getElementById(id)!;
-//     const h1 = document.createElement("h1");
-//     const objCar = new target("DS3", "black")
-//     h1.innerText = objCar.carDetails()
-//     title.appendChild(h1)
-//   }
-// }
-// @Component("title")
-// class Car {
-//   constructor (private name: string, private color: string) {}
-//   carDetails() {
-//     return `Marque: ${this.name} | Couleur: ${this.color}`
-//   }
-// }
-//  const citroen = new Car("DS3", "noir");
-//  console.log(citroen.carDetails());
-// MULTIPLE DECORATORS FACTORIES
-// function first() {
-//   console.log("first(): factory evaluated"); // en console => 1 (s'affiche en premier)
-//   return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
-//     console.log("first(): called"); // en console => 4 (s'affiche en dernier)
-//   };
-// }
-// function second() {
-//   console.log("second(): factory evaluated"); // en console => 2 (s'affiche en second)
-//   return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
-//     console.log("second(): called"); // en console => 3 (s'affiche en troisieme)
-//   };
-// }
-// class ExampleClass {
-//   @first()
-//   @second()
-//   method() {}
-// }
-// CLASS DECORATOR
-// const PropertyLog = (target: any, propertyKey: string) => {
-// console.log(target);
-// console.log(propertyKey);
-// }
-// class Car {
-//   @PropertyLog
-//   brand: string;
-//   color: string;
-//   constructor (brand: string, color: string) {
-//     this.brand = brand,
-//     this.color = color
-//   }
-//   getInfos() {
-//     return `Marque: ${this.brand} | Color: ${this.color}`
-//   }
-// }
-// const citroen = new Car("DS3", "black")
-// console.log(citroen);
-// METHOD DECORATORS
-// const setterLog = (target: any, propertyKey: string, descriptor: PropertyDescriptor) => {
-//   console.log(target);            // Prototype de la class
-//   console.log(propertyKey);       // setColor
-//   console.log(descriptor);        // propriété du descriptor
-// }
-// const infosLog = (target: any, propertyKey: string, descriptor: PropertyDescriptor) => {
-//   console.log(target);            // Prototype de la class
-//   console.log(propertyKey);       // setColor
-//   console.log(descriptor);        // propriété du descriptor
-// }
-// class Car {
-//   brand: string;
-//   private color: string;
-//   constructor (brand: string, color: string) {
-//     this.brand = brand;
-//     this.color = color;
-//   }
-//   //@setterLog
-//   setColor(color: string) {
-//     this.color = color;
-//   }
-//   @infosLog
-//   infos() {
-//     return `Marque ${this.brand} | Couleur ${this.color}`;
-//   }
-// }
-// const peugeot = new Car("3008", "black")
-// console.log(peugeot.infos); // infos de Car
-// peugeot.infos = function() {
-//   return "Hello"
-// }
-// console.log(peugeot.infos());
-// const readonly = (value: boolean) => {
-//   return function(target: any, propertyKey: string, descriptor: PropertyDescriptor)  {
-//   // console.log(descriptor);        // writable
-//   descriptor.writable = value;
-//   }
-// }
-// const methodLog = (target: any, name: string, descriptor: PropertyDescriptor) => {
-//   console.log("Je suis dans le decorator de la méthode"); // le console.log s'affichera en second
-//   // console.log(name);
-//   // console.log(descriptor);
-// }
-// const logparam = (target: any, name: string, position: number) => {
-//   console.log("Je suis dans le décorator du paramètre"); // le console.log s'affichera en premier
-//   // console.log(target);                  // prototype
-//   // console.log(name);                    // Nom de la méthode loginMsg
-//   // console.log(position);                // position du paramètre sur lequel agit le décorator
-// }
-// class Person {
-//   constructor( public age: number, public eyes: string, private hair: string) {}
-//   @readonly(true)
-//   getHairColor() {
-//     return this.hair;
-//   }
-//   @methodLog
-//   loginMsg(@logparam minAge: number, textOne: string, textTwo: string) {
-//     if (this.age > 17) {
-//       return textOne
-//     }
-//     return textTwo;
-//   }
-// }
-// const person = new Person( 18,"marron", "chatain")
-// console.log(person.getHairColor()); // chatain
-// person.getHairColor = function () {
-//   return "Hello";
-// }
-// console.log(person); // hello
-// console.log(person.loginMsg(17, "Inscription autorisée", "Inscription refusée"));
-// REECRITURE FONCTION CONSTRUCTOR GRACE A LA CLASSE DECORATOR
-// const changeArtist = (artist: string, id: string) => {
-//   return function<T extends { new (...args: any[]): {age: number} }>(constructor: T) {
-//     return class extends constructor {
-//       constructor (...args: any[]) {
-//         super();
-//         const el = document.getElementById(id) as HTMLDivElement;
-//         const h1 = document.createElement("h1");
-//         h1.innerText = artist;
-//         el.append(h1);
-//         this.age = 20;
-//       }
-//     }
-//   }
-// }
-function changeArtist(constructor) {
-    return class extends constructor {
-        newProperty = "Toto";
-    };
+function typeName(arg) {
+    if (arg === null) {
+        return "null";
+    }
+    return typeof arg;
 }
-// const methodLog = (target: any, name: string, descriptor: PropertyDescriptor) => {
-//   // console.log("je suis dans le decorator de la méthode")
-// }
-let Person = class Person {
-    age;
-    eyes;
-    artist;
-    constructor(age, eyes, artist) {
-        this.age = age;
-        this.eyes = eyes;
-        this.artist = artist;
-    }
-    loginMsg(minAge, textOne, textTwo) {
-        if (this.age > 17) {
-            return textOne;
-        }
-        return textTwo;
-    }
-};
-Person = __decorate([
-    changeArtist
-], Person);
-const person = new Person(17, "marron", "Bono");
-// console.log(`${person.loginMsg(18, "OK", "refusée")}`);
-console.log(person);
+const strVal = typeName("Hello"); // string
+console.log(strVal);
+const numVal = typeName(1); // number
+console.log(numVal);
+const boolVal = typeName(true); // boolean
+console.log(boolVal);
+const undefVal = typeName(undefined); // undefined
+console.log(undefVal);
+const funcVal = typeName(() => console.log("Hello")); // fonction
+console.log(funcVal);
+const objVal = typeName(["Hello", 4]); // object
+console.log(objVal);
+const nullVal = typeName(null);
+console.log(nullVal);
 export {};

@@ -209,12 +209,12 @@
 
 
 
-function changeArtist<T extends { new (...args: any[]): {age: number} }>(constructor: T) {
-    return class extends constructor {
-      newProperty = "Toto";
+// function changeArtist<T extends { new (...args: any[]): {age: number} }>(constructor: T) {
+//     return class extends constructor {
+//       newProperty = "Toto";
 
-    }
-}
+//     }
+// }
 
 
 
@@ -222,21 +222,70 @@ function changeArtist<T extends { new (...args: any[]): {age: number} }>(constru
 //   // console.log("je suis dans le decorator de la méthode")
 // }
 
-@changeArtist
-class Person {
-  constructor(public age: number, public eyes: string, public artist: string) {}
+// @changeArtist
+// class Person {
+//   constructor(public age: number, public eyes: string, public artist: string) {}
 
 
-    loginMsg(minAge: number, textOne: string, textTwo:string) {
-      if (this.age > 17) {
-        return textOne
-      }
-      return textTwo
-    }
+//     loginMsg(minAge: number, textOne: string, textTwo:string) {
+//       if (this.age > 17) {
+//         return textOne
+//       }
+//       return textTwo
+//     }
 
+// }
+
+
+// const person = new Person( 17,"marron", "Bono")
+// console.log(`${person.loginMsg(18, "OK", "refusée")}`);
+// console.log(person);
+
+// CONDITIONAL TYPES
+
+type MyType = number;
+type MyType2 = MyType;
+
+
+// via le conditional type
+
+type MyConditionalType = MyType extends string ? "string" : null;     // null
+type MyConditionalType2 = MyType extends number ? "string" : null;    // string
+
+type MyType3<T> = T extends number ? "number" : "random";
+type WithNumber = MyType3<number>; // number
+type WithNumber2 = MyType3<string> // random
+
+
+type TypeName<T> =
+  T extends string ? "string" :
+  T extends number ? "number" :
+  T extends boolean ? "boolean" :
+  T extends undefined ? "undefined" :
+  T extends Function ? "function" :
+  T extends null ? "null" :
+  "object";
+
+
+function typeName<T>(arg: T): TypeName<T> {
+  if (arg === null) {
+    return "null" as TypeName<T>
+  }
+  return typeof arg as TypeName<T>
 }
 
 
-const person = new Person( 17,"marron", "Bono")
-// console.log(`${person.loginMsg(18, "OK", "refusée")}`);
-console.log(person);
+const strVal= typeName("Hello") // string
+console.log(strVal);
+const numVal = typeName(1) // number
+console.log(numVal);
+const boolVal = typeName(true) // boolean
+console.log(boolVal);
+const undefVal = typeName(undefined) // undefined
+console.log(undefVal);
+const funcVal = typeName(() => console.log("Hello")) // fonction
+console.log(funcVal);
+const objVal = typeName(["Hello", 4]) // object
+console.log(objVal);
+const nullVal = typeName(null);
+console.log(nullVal);
