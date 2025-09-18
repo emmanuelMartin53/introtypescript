@@ -301,7 +301,7 @@ type MyType2 = MyType;
 //   [Prop in Props]: Prop;
 // }
 
-type Props = "prop1" | "prop2" | "prop3";
+// type Props = "prop1" | "prop2" | "prop3";
 
 
 // type MyMappedTypes<T> = {
@@ -310,8 +310,68 @@ type Props = "prop1" | "prop2" | "prop3";
 
 // type MyType = MyMappedTypes<({color: "green", price: 200})>
 
-type MyPick<T, Props extends keyof T> = {
-  [Prop in Props]: T[Prop]
+// type MyPick<T, Props extends keyof T> = {
+//   [Prop in Props]: T[Prop]
+// }
+
+// type NewType = MyPick<{color: "green", price: 200, name: "pen"}, "price">
+
+
+// MIXINS
+
+// c'est une fonction qui prend un constructor pour créer une nouvelle classe
+// qui hérite de ce constructor, avec des fonctionnalités additionnelles,
+// et nous retourne une nouvelle classe
+
+
+class Person {
+  speak() {
+    console.log("Je parle")
+  }
+
+   walk() {
+    console.log("Je marchee")
+  }
 }
 
-type NewType = MyPick<{color: "green", price: 200, name: "pen"}, "price">
+class Alien {
+  telepathy() {
+    console.log("Je communique")
+  }
+}
+
+// Définir Mixins
+
+type Class = new (...args: any[]) => any
+
+
+function PersonMixin<Base extends Class>(base: Base) {
+  return class extends base {
+    speak() {
+      console.log("Je parle")
+    }
+
+    walk() {
+      console.log("Je marchee")
+    }
+  }
+}
+
+function AlienMixin<Base extends Class> (base: Base) {
+  return class extends base {
+      telepathy() {
+        console.log(`Je communique sans parler, j'ai ${this.age} ans`)
+    }
+  }
+}
+
+
+const Paul = PersonMixin(AlienMixin(class {
+  age: number = 5000;
+}))
+
+const paul = new Paul();
+paul.speak();
+paul.walk();
+paul.telepathy();
+console.log(`Age: ${paul.age} ans`)
